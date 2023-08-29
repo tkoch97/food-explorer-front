@@ -1,11 +1,28 @@
 import styled from 'styled-components';
-import { applyFontStyle } from '../../styles/theme';
 
 export const Container = styled.div`
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 31.6rem;
+  height: 100vh;
+  margin: auto;
+  padding: 0 1.0rem;
+  `
 
-  > h1 {
-    ${props => applyFontStyle(props.fontApplied)};
-    color: ${({theme}) => theme.COLORS.LIGHT_200};
+export const Brand = styled.div`
+  margin-bottom: 7.3rem;
+  width: 22.4rem;
+
+  > img {
+    width: 100%;
   }
-`;
+`
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  width: 100%;
+`

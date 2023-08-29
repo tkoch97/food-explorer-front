@@ -83,8 +83,64 @@ const fontStyles = {
   ROBOTO_SMALLEST_REGULAR: generateFontStyle({
     family: 'Roboto',
     weight: 400,
-    size: '5.0rem',
+    size: '1.2rem',
     lineHeight: '160%'
+  }),
+
+  ROBOTO_SMALLER_REGULAR: generateFontStyle({
+    family: 'Roboto',
+    weight: 400,
+    size: '1.4rem',
+    lineHeight: '160%'
+  }),
+
+  ROBOTO_SMALLER_BOLD: generateFontStyle({
+    family: 'Roboto',
+    weight: 700,
+    size: '1.4rem',
+    lineHeight: '160%'
+  }),
+
+  ROBOTO_SMALL_SPACED: generateFontStyle({
+    family: 'Roboto',
+    weight: 400,
+    size: '1.6rem',
+    lineHeight: '160%'
+  }),
+
+  ROBOTO_SMALL_REGULAR: generateFontStyle({
+    family: 'Roboto',
+    weight: 400,
+    size: '1.6rem',
+    lineHeight: '100%'
+  }),
+
+  ROBOTO_BIG_BOLD: generateFontStyle({
+    family: 'Roboto',
+    weight: 700,
+    size: '2.0rem',
+    lineHeight: '160%'
+  }),
+
+  ROBOTO_BIGGER_BOLD: generateFontStyle({
+    family: 'Roboto',
+    weight: 700,
+    size: '2.4rem',
+    lineHeight: 'normal'
+  }),
+
+  ROBOTO_BIGGEST_REGULAR: generateFontStyle({
+    family: 'Roboto',
+    weight: 400,
+    size: '3.2rem',
+    lineHeight: '160%'
+  }),
+
+  ROBOTO_GIANT_BOLD: generateFontStyle({
+    family: 'Roboto',
+    weight: 400,
+    size: '4.2rem',
+    lineHeight: 'normal'
   }),
 
 };
