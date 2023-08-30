@@ -28,7 +28,7 @@ export function SignIn() {
 
         <Button title='Entrar'/>
         
-        <ButtonText title="Criar uma conta"/>
+        <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Criar uma conta"/>
       </Form>
 
     </Container>

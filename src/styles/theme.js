@@ -52,7 +52,7 @@ const fontStyles = {
 
   // Poppins:
   POPPINS_300_REGULAR: generateFontStyle({
-    weight: 400,
+    weight: 300,
     size: '2.4rem',
   }),
 
@@ -82,14 +82,14 @@ const fontStyles = {
   // Roboto:
   ROBOTO_SMALLEST_REGULAR: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 300,
     size: '1.2rem',
     lineHeight: '160%'
   }),
 
   ROBOTO_SMALLER_REGULAR: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 300,
     size: '1.4rem',
     lineHeight: '160%'
   }),
@@ -103,14 +103,14 @@ const fontStyles = {
 
   ROBOTO_SMALL_SPACED: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 300,
     size: '1.6rem',
     lineHeight: '160%'
   }),
 
   ROBOTO_SMALL_REGULAR: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 300,
     size: '1.6rem',
     lineHeight: '100%'
   }),
@@ -131,14 +131,14 @@ const fontStyles = {
 
   ROBOTO_BIGGEST_REGULAR: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 300,
     size: '3.2rem',
     lineHeight: '160%'
   }),
 
   ROBOTO_GIANT_BOLD: generateFontStyle({
     family: 'Roboto',
-    weight: 400,
+    weight: 700,
     size: '4.2rem',
     lineHeight: 'normal'
   }),
