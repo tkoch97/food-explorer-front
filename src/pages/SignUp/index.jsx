@@ -16,7 +16,7 @@ export function SignUp() {
       </Brand>
 
       <Form>
-        <SectionTitle400Medium title="Crie sua conta"/>
+        <SectionTitle400Medium hideOnSmallScreens={true} title="Crie sua conta"/>
 
         <Input labelName='Seu Nome' 
         placeholder='Exemplo: Maria da Silva'

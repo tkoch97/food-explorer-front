@@ -49,6 +49,7 @@ export const Form = styled.form`
     max-width: 47.6rem;
     padding: 6.4rem;
     border-radius: 1.6rem;
+
   }
 
 `
