@@ -5,8 +5,8 @@ export const Container = styled.button`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   border: none;
+  align-items: ${props => (props.alignContent)};
   color: ${({theme}) => theme.COLORS.LIGHT_100};
   background: none;
   ${props => applyFontStyle(props.fontApplied)};
@@ -14,5 +14,5 @@ export const Container = styled.button`
   &:hover {
     cursor: pointer;
   }
-
-`
+  
+  `
