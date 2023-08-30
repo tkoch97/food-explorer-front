@@ -1,10 +1,13 @@
 import { Container } from "./style";
 import PropTypes from 'prop-types';
 
-export function SectionTitle400Medium({title, children}) {
-  
+export function SectionTitle400Medium(props) {
+  const {title, children, hideOnSmallScreens} = props
   return(
-    <Container fontApplied="POPPINS_400_MEDIUM">
+    <Container 
+      fontApplied="POPPINS_400_MEDIUM"
+      hideOnSmallScreens={hideOnSmallScreens}
+    >
       <p>{title}</p>
       {children}
     </Container>
@@ -13,5 +16,6 @@ export function SectionTitle400Medium({title, children}) {
 
 SectionTitle400Medium.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.any
+  children: PropTypes.any,
+  hideOnSmallScreens: PropTypes.bool
 };

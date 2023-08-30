@@ -145,7 +145,7 @@ const fontStyles = {
 
 };
 
-// Criar função para aplicar um padrão de estilo de fonte.
+// Criar função para aplicar um padrão de estilo de fonte, será aplicado no CSS do componente usando as props.
 export const applyFontStyle = (fontApplied) => {
   return fontStyles[fontApplied];
 };

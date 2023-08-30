@@ -1,7 +1,8 @@
 import { Container } from "./style";
 import PropTypes from 'prop-types';
 
-export function Button({title, loading = false, ...rest}) {
+export function Button(props) {
+  const {title, loading = false, ...rest} = props
   return (
     <Container 
       fontApplied="POPPINS_100_MEDIUM"

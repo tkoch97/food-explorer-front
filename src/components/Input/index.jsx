@@ -1,8 +1,8 @@
 import { Container } from "./style";
 import PropTypes from 'prop-types';
 
-export function Input({labelName, ...rest}) {
-
+export function Input(props) {
+  const {labelName, ...rest} = props
   return(
     <Container fontApplied="ROBOTO_SMALL_REGULAR">
 
