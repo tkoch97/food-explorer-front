@@ -6,22 +6,13 @@ export const Container = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding: 1.2rem 3.2rem;
   border: none;
-  border-radius: 0.5rem;
   color: ${({theme}) => theme.COLORS.LIGHT_100};
-  background: ${({theme}) => theme.COLORS.TOMATO_100};
+  background: none;
   ${props => applyFontStyle(props.fontApplied)};
   
   &:hover {
-    background: ${({theme}) => theme.COLORS.TOMATO_200};
     cursor: pointer;
-  }
-  
-  &:disabled {
-    background: ${({theme}) => theme.COLORS.TOMATO_400};
-    cursor: progress;
   }
 
 `
