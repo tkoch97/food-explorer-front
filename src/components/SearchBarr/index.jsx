@@ -5,7 +5,7 @@ export function SearchBarr(props) {
   const {...rest} = props
 
   return (
-    <Container>
+    <Container fontApplied="ROBOTO_SMALL_REGULAR">
       <FiSearch />
       <input {...rest} />
     </Container>
