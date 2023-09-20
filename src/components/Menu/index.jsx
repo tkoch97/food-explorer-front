@@ -2,13 +2,11 @@ import { Container, ContainerMenu, Options } from "./style";
 import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
-import { Header } from "../Header";
 
 export function Menu(props) {
-  const {isAdmin = 1} = props;
+  const {isAdmin = 0} = props;
   return(
     <Container >
-      <Header />
 
       <ContainerMenu>
         <SearchBarr placeholder="Busque por pratos ou ingredientes"/>

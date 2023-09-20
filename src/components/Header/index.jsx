@@ -7,27 +7,28 @@ import brandAdminDesktop from "../../assets/brand-admin-desktop.svg";
 import brandAdminMobile from "../../assets/brand-admin-mobile.svg";
 import brandNormalMobileAndDesktop from "../../assets/brand-normal-mobile-and-desktop.svg";
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 export function Header(props) {
-  const {isMenuOpen = 1, isAdmin = 1} = props;
+  const {isAdmin = 1} = props;
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
-    <Container>
+    <Container className='headerSpace'>
 
       {!isDesktop && (
-
-        <OpenAndCloseMenuButtonsSpace>
-          {!isMenuOpen ? 
-            <FiMenu  className='OpenMenuIcon'/> : 
-            <>
-              <IoMdClose className='CloseMenuIcon'/>
-              <span className='MenuText'>Menu</span>
-            </>
-          }
-        </OpenAndCloseMenuButtonsSpace>
-
+          <OpenAndCloseMenuButtonsSpace>
+            {!isMenuOpen ? 
+              <FiMenu  className='OpenMenuIcon' onClick={() => setIsMenuOpen(true)}/> : 
+              <>
+                <IoMdClose className='CloseMenuIcon' onClick={() => setIsMenuOpen(false)}/>
+                <span className='MenuText'>Menu</span>
+              </>
+            }
+          </OpenAndCloseMenuButtonsSpace>
       )}
 
       {(isDesktop || !isMenuOpen) && (
