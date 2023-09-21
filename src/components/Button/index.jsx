@@ -2,7 +2,7 @@ import { Container } from "./style";
 import PropTypes from 'prop-types';
 
 export function Button(props) {
-  const {title, loading = false, ...rest} = props
+  const {title, icon: Icon, loading = false, ...rest} = props
   return (
     <Container 
       fontApplied="POPPINS_100_MEDIUM"
@@ -10,6 +10,7 @@ export function Button(props) {
       disabled={loading}
       {...rest}
     >
+      {Icon && <Icon />}
       {loading ? 'Carregando...' : title}
     </Container>
   )
@@ -17,5 +18,6 @@ export function Button(props) {
 
 Button.propTypes = {
   title: PropTypes.string,
-  loading:PropTypes.bool
+  loading:PropTypes.bool,
+  icon: PropTypes.any
 };

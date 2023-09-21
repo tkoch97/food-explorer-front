@@ -5,9 +5,14 @@ import { Container } from './style.js';
 export function Home() {
 
   return (
-    <Container>
-      <Header />
-      <Footer />
+    <Container className='page'>
+      <div className='header'>
+        <Header />
+      </div>
+
+      <div className='footer'>
+        <Footer />
+      </div>
     </Container>
   )
 }

@@ -4,8 +4,10 @@ import { applyFontStyle } from '../../styles/theme';
 export const Container = styled.button`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.8rem;
   align-items: center;
+  justify-content: center;
 
   padding: 1.2rem 3.2rem;
   border: none;
@@ -13,6 +15,10 @@ export const Container = styled.button`
   color: ${({theme}) => theme.COLORS.LIGHT_100};
   background: ${({theme}) => theme.COLORS.TOMATO_100};
   ${props => applyFontStyle(props.fontApplied)};
+
+  > svg {
+    font-size: 3.2rem;
+  }
   
   &:hover {
     background: ${({theme}) => theme.COLORS.TOMATO_200};
