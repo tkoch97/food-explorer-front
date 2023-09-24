@@ -1,6 +1,19 @@
-import styled from 'styled-components';
-// import { applyFontStyle } from '../../styles/theme';
+import styled, {css, keyframes} from 'styled-components';
 
+const slideInFromTop = keyframes`
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -10,12 +23,25 @@ export const Container = styled.div`
   background: ${({theme}) => theme.COLORS.DARK_700};
   position: fixed;
   top: 0;
+
+  ${props => 
+    !props.isDesktop && props.isMenuOpen && css`
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6.4rem;
+      height: 100%;
+    `}
   
   @media (min-width: 1024px) {
     justify-content: space-between;
     align-items: center;
     padding: 2.4rem 12.3rem;
     gap: 3.2rem;
+  }
+
+  .menuSpace {
+    animation: ${slideInFromTop} 0.6s ease-in-out backwards;
   }
 
   .searchBarrSpace {
@@ -27,7 +53,7 @@ export const Container = styled.div`
 
   .buttonSpace {
     @media (min-width: 1024px) {
-      width: 77.0rem;
+      width: 40.0rem;
     }
   }
 `

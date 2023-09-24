@@ -4,11 +4,11 @@ import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
 
 export function Menu(props) {
-  const {isAdmin = 0} = props;
+  const {isAdmin} = props;
   return(
     <Container >
 
-      <ContainerMenu>
+      <ContainerMenu className="containerMenu">
         <SearchBarr placeholder="Busque por pratos ou ingredientes"/>
 
         <Options fontApplied="POPPINS_300_REGULAR">
