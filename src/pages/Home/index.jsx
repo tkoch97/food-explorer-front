@@ -1,5 +1,6 @@
 import { Footer } from '../../components/Footer/index.jsx';
-import { Header } from '../../components/Header/index.jsx';
+import { NavBar } from '../../components/NavBar/index.jsx';
+import { Hero } from '../../components/Hero/index.jsx';
 import { Container } from './style.js';
 
 export function Home() {
@@ -7,7 +8,11 @@ export function Home() {
   return (
     <Container className='page'>
       <div className='header'>
-        <Header />
+        <NavBar />
+      </div>
+
+      <div className='hero'>
+        <Hero/>
       </div>
 
       <div className='footer'>

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Button } from '../Button';
 
-export function Header(props) {
+export function NavBar(props) {
   const {isAdmin = 1} = props;
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
@@ -20,7 +20,7 @@ export function Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <Container className='headerSpace' isDesktop={isDesktop} isMenuOpen={isMenuOpen}>
+    <Container isDesktop={isDesktop} isMenuOpen={isMenuOpen}>
 
       {!isDesktop && (
           <OpenAndCloseMenuButtonsSpace className='openAndCloseMenu'>
@@ -69,7 +69,7 @@ export function Header(props) {
   )
 }
 
-Header.propTypes = {
+NavBar.propTypes = {
   isAdmin: PropTypes.bool,
   isMenuOpen: PropTypes.bool,
 };
