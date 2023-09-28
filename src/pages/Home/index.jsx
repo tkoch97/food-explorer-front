@@ -1,6 +1,5 @@
 import { Footer } from '../../components/Footer/index.jsx';
 import { NavBar } from '../../components/NavBar/index.jsx';
-import { Hero } from '../../components/Hero/index.jsx';
 import { Container } from './style.js';
 
 export function Home() {
@@ -11,8 +10,15 @@ export function Home() {
         <NavBar />
       </div>
 
-      <div className='hero'>
-        <Hero/>
+      <div className='main'>
+        <div className='hero'>
+          <div className='heroImage'/>
+          <div className='heroText'>
+            <h2>Sabores inigualáveis</h2>
+            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+          </div>
+        </div>
+
       </div>
 
       <div className='footer'>
