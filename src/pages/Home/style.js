@@ -6,16 +6,23 @@ export const Container = styled.div `
   display: flex;
   flex-direction: column;
 
+  @media(min-width: 1280px) {
+    align-items: center;
+  }
+  
+
  .header {
   position: fixed;
   z-index: 2;
   top: 0;
+  left: 0;
  }
 
  .footer {
   position: fixed;
   z-index: 2;
   top: 0;
+  left: 0;
  }
 
  .main {
@@ -23,11 +30,16 @@ export const Container = styled.div `
   margin: 0 1.6rem;
   
   @media(min-width: 768px) {
-    padding: 25.0rem 0;
+    padding: 20.0rem 0;
   }
   
   @media(min-width: 1024px) {
     margin: 0 12.4rem;
+  }
+  
+  @media(min-width: 1280px) {
+    width: 1120px;
+    padding: 24.0rem 0;
   }
 
   .hero {
