@@ -11,6 +11,7 @@ export function Home() {
       </div>
 
       <div className='main'>
+
         <div className='hero'>
           <div className='heroImage'/>
           <div className='heroText'>
@@ -18,6 +19,8 @@ export function Home() {
             <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
           </div>
         </div>
+
+        
 
       </div>
 
