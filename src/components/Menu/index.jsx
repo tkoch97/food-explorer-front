@@ -1,4 +1,5 @@
-import { Container, ContainerMenu, Options } from "./style";
+import { Container, Main, Options, Header, ButtonClose } from "./style";
+import { AiOutlineClose } from "react-icons/ai";
 import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
@@ -8,7 +9,14 @@ export function Menu(props) {
   return(
     <Container >
 
-      <ContainerMenu className="containerMenu">
+      <Header>
+        <ButtonClose>
+          <AiOutlineClose/>
+        </ButtonClose>
+        Menu
+      </Header>
+
+      <Main className="containerMenu">
         <SearchBarr placeholder="Busque por pratos ou ingredientes"/>
 
         <Options fontApplied="POPPINS_300_REGULAR">
@@ -20,7 +28,7 @@ export function Menu(props) {
           <ButtonText  title="Sair"/>
 
         </Options>
-      </ContainerMenu>
+      </Main>
 
     </Container>
   )

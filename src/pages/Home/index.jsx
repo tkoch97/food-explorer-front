@@ -1,5 +1,6 @@
-import { Footer } from '../../components/Footer/index.jsx';
-import { NavBar } from '../../components/NavBar/index.jsx';
+import { Footer } from '../../components/Footer';
+import { NavBar } from '../../components/NavBar';
+import { Menu } from '../../components/Menu';
 import { Container } from './style.js';
 
 export function Home() {
@@ -8,6 +9,9 @@ export function Home() {
     <Container className='page'>
       <div className='header'>
         <NavBar />
+      </div>
+      <div className='menu'>
+        <Menu isAdmin = '1'/>
       </div>
 
       <div className='main'>
