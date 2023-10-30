@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { applyFontStyle } from '../../styles/theme';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakPoints';
 
 export const Container = styled.div`
   display: flex;
@@ -16,10 +17,16 @@ export const Container = styled.div`
     color: ${({theme}) => theme.COLORS.LIGHT_200}
   }
 
-  @media(min-width:1024px) {
+  @media(min-width: ${DEVICE_BREAKPOINTS.LG}) {
     gap: 30.0rem;
     > p {
       font-size: 1.4rem;
+    }
+  }
+
+  @media(max-width: ${DEVICE_BREAKPOINTS.XS}) {
+    > p {
+      font-size: 0.8rem;
     }
   }
 `
