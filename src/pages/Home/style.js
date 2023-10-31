@@ -18,16 +18,6 @@ export const Container = styled.div `
   left: 0;
  }
 
- .menu {
-  position: absolute;
-  z-index: 2;
-  width: 100vw;
-  height: 100vh;
-
-  transform: translateY(-100vh);
-  transition: transform 0.5s ease-in-out;
- }
-
  .footer {
   position: fixed;
   z-index: 2;

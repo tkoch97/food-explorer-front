@@ -9,6 +9,18 @@ export const Container = styled.div`
   background: ${({theme}) => theme.COLORS.DARK_400};
   width: 100%;
   height: 100%;
+
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &[data-menu-is-open="true"] {
+    transform: translateX(0);
+  }
   `
 
 export const Header = styled.div`
