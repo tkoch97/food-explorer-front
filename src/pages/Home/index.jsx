@@ -2,17 +2,23 @@ import { Footer } from '../../components/Footer';
 import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
 import { Container } from './style.js';
+import { useState } from 'react';
 
 export function Home() {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <Container className='page'>
       <div className='header'>
-        <NavBar />
+        <NavBar openMenu = {() => setIsMenuOpen(true)}/>
       </div>
-      <div className='menu'>
-        <Menu isAdmin = '1'/>
-      </div>
+        <Menu 
+          isAdmin = '1'
+          isMenuOpen = {isMenuOpen}
+          closeMenu = {() => setIsMenuOpen(false)}
+        />
+
 
       <div className='main'>
 

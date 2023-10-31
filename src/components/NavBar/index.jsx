@@ -10,14 +10,14 @@ import PropTypes from 'prop-types';
 import { Button } from '../Button';
 
 export function NavBar(props) {
-  const {isAdmin = 1} = props;
+  const {isAdmin = 1, openMenu} = props;
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
 
   return (
     <Container isDesktop={isDesktop}>
       <OpenMenuButtonSpace>
-        <FiMenu/>
+        <FiMenu onClick={openMenu}/>
       </OpenMenuButtonSpace>
 
       <Brand className='brandLogo'>
@@ -47,5 +47,5 @@ export function NavBar(props) {
 
 NavBar.propTypes = {
   isAdmin: PropTypes.bool,
-  isMenuOpen: PropTypes.bool,
+  openMenu: PropTypes.bool,
 };

@@ -5,12 +5,12 @@ import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
 
 export function Menu(props) {
-  const {isAdmin} = props;
+  const {isAdmin, isMenuOpen, closeMenu} = props;
   return(
-    <Container >
+    <Container data-menu-is-open = {isMenuOpen}>
 
       <Header>
-        <ButtonClose>
+        <ButtonClose onClick={closeMenu}>
           <AiOutlineClose/>
         </ButtonClose>
         Menu
@@ -36,4 +36,6 @@ export function Menu(props) {
 
 Menu.propTypes = {
   isAdmin: PropTypes.bool,
+  closeMenu: PropTypes.bool,
+  isMenuOpen: PropTypes.bool,
 };
