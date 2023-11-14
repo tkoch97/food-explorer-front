@@ -10,15 +10,13 @@ export function Home() {
 
   return (
     <Container className='page'>
-      <div className='header'>
         <NavBar openMenu = {() => setIsMenuOpen(true)}/>
-      </div>
+
         <Menu 
           isAdmin = '1'
           isMenuOpen = {isMenuOpen}
           closeMenu = {() => setIsMenuOpen(false)}
         />
-
 
       <div className='main'>
 
