@@ -9,21 +9,6 @@ export const Container = styled.div `
   @media(min-width: 1280px) {
     align-items: center;
   }
-  
-
- .header {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
- }
-
- .footer {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
- }
 
  .main {
   padding: 17.0rem 0;

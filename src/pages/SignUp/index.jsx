@@ -3,7 +3,7 @@ import { Input } from '../../components/Input';
 import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
-import { SectionTitle400Medium } from '../../components/SectionTitle400Medium';
+import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
 
 export function SignUp() {
 
@@ -16,7 +16,7 @@ export function SignUp() {
       </Brand>
 
       <Form>
-        <SectionTitle400Medium hideOnSmallScreens={true} title="Crie sua conta"/>
+        <SectionSignInAndSignUp hideOnSmallScreens={true} title="Crie sua conta"/>
 
         <Input labelName='Seu Nome' 
         placeholder='Exemplo: Maria da Silva'

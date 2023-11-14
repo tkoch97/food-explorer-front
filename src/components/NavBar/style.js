@@ -8,6 +8,8 @@ export const Container = styled.div`
   width: 100%;
   background: ${({theme}) => theme.COLORS.DARK_700};
   position: fixed;
+  z-index: 2;
+  left: 0;
   top: 0;
   
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {

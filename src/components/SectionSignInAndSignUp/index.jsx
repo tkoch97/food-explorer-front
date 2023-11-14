@@ -1,7 +1,7 @@
 import { Container } from "./style";
 import PropTypes from 'prop-types';
 
-export function SectionTitle400Medium(props) {
+export function SectionSignInAndSignUp(props) {
   const {title, children, hideOnSmallScreens} = props
   return(
     <Container 
@@ -14,7 +14,7 @@ export function SectionTitle400Medium(props) {
   );
 }
 
-SectionTitle400Medium.propTypes = {
+SectionSignInAndSignUp.propTypes = {
   title: PropTypes.string,
   children: PropTypes.any,
   hideOnSmallScreens: PropTypes.bool

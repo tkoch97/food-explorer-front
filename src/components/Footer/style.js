@@ -9,6 +9,8 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   position: fixed;
+  z-index: 2;
+  left: 0;
   bottom: 0;
   background: ${({theme}) => theme.COLORS.DARK_600};
   
