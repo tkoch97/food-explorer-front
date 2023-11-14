@@ -34,6 +34,7 @@ export const Container = styled.div `
     display: grid;
     grid-template-columns: 45% 50%;
     border-radius: 0.8rem;
+    margin-bottom: 5.0rem;
 
     @media(min-width: 1280px) {
       max-height: 35.0rem;
@@ -138,5 +139,9 @@ export const Container = styled.div `
       }
     }
   }
+ }
+
+ .footer {
+  width: 100%;
  }
 `

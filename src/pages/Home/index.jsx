@@ -1,6 +1,7 @@
 import { Footer } from '../../components/Footer';
 import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
+import { SectionHome } from '../../components/SectionHome';
 import { Container } from './style.js';
 import { useState } from 'react';
 
@@ -27,6 +28,18 @@ export function Home() {
             <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
           </div>
         </div>
+
+        <SectionHome title='Refeições'>
+
+        </SectionHome>
+
+        <SectionHome title='Bebidas'>
+
+        </SectionHome>
+        
+        <SectionHome title='Sobremesas'>
+
+        </SectionHome>
 
         
 
