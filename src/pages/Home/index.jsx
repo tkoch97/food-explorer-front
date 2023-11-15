@@ -30,13 +30,13 @@ export function Home() {
         </div>
 
         <SectionHome title='Refeições'>
-
+          
         </SectionHome>
 
         <SectionHome title='Bebidas'>
 
         </SectionHome>
-        
+
         <SectionHome title='Sobremesas'>
 
         </SectionHome>
