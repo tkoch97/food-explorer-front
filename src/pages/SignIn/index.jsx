@@ -20,11 +20,11 @@ export function SignIn() {
 
         <Input labelName='Email' 
         placeholder='Exemplo: exemplo@exemplo.com.br'
-        type='text' />
+        type='email' />
 
         <Input labelName='Senha' 
         placeholder='No mínimo 6 caracteres'
-        type='text' />
+        type='password' />
 
         <Button title='Entrar'/>
         

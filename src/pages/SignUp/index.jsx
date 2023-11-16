@@ -1,11 +1,17 @@
 import { Form, Brand, Container } from './style';
+import { useState } from 'react';
 import { Input } from '../../components/Input';
 import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
+import { executeSignUp } from '../../functions/ExecuteSignUp';
 
 export function SignUp() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
 
   return (
@@ -20,17 +26,23 @@ export function SignUp() {
 
         <Input labelName='Seu Nome' 
         placeholder='Exemplo: Maria da Silva'
-        type='text' />
+        type='text' 
+        onChange ={e => setName(e.target.value)}
+        />
 
         <Input labelName='Email' 
         placeholder='Exemplo: exemplo@exemplo.com.br'
-        type='text' />
+        type='email' 
+        onChange ={e => setEmail(e.target.value)}
+        />
 
         <Input labelName='Senha' 
         placeholder='No mínimo 6 caracteres'
-        type='text' />
+        type='password' 
+        onChange ={e => setPassword(e.target.value)}
+        />
 
-        <Button title='Criar conta'/>
+        <Button title='Criar conta' onClick={() => executeSignUp(name, email, password)}/>
         
         <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/'/>
       </Form>
