@@ -32,7 +32,7 @@ export function SignUp() {
 
         <Button title='Criar conta'/>
         
-        <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta"/>
+        <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/'/>
       </Form>
 
 
