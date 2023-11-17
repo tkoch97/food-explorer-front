@@ -1,11 +1,15 @@
-import { Form, Brand, Container } from './style';
 import { Input } from '../../components/Input';
-import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
+import { Form, Brand, Container } from './style';
 import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/authContext';
 import { ButtonText } from '../../components/ButtonText';
 import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
+import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
 
 export function SignIn() {
+
+  const data = useAuth();
+  console.log(data);
 
 
   return (
