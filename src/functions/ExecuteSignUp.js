@@ -1,9 +1,10 @@
 import { api } from "../services/api"
 
-export function executeSignUp(name, email, password) {
+export function executeSignUp(name, email, password, navigate) {
+  
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
   if(!name || !email || !password) {
     return alert("Por favor, preencha todos os campos")
   } else if(password.length < 6) {
@@ -11,12 +12,13 @@ export function executeSignUp(name, email, password) {
   } else if (!emailPattern.test(email)) {
     return alert("Por favor, insira um endereço de e-mail válido.")
   }
-
+  
   api.post("/user", {name, email, password})
   .then(() => {
-    alert("Usuário cadastrado com sucesso")
+    alert("Usuário cadastrado com sucesso, faça seu login")
+    navigate('/')
   })
-  .catch(error => {
+  .catch(error => { 
     if(error.response) {
       alert(error.response.data.message);
     }else{

@@ -6,12 +6,14 @@ import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
 import { executeSignUp } from '../../functions/ExecuteSignUp';
+import { useNavigate } from 'react-router-dom';
 
 export function SignUp() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
 
   return (
@@ -42,7 +44,7 @@ export function SignUp() {
         onChange ={e => setPassword(e.target.value)}
         />
 
-        <Button title='Criar conta' onClick={() => executeSignUp(name, email, password)}/>
+        <Button title='Criar conta' onClick={() => executeSignUp(name, email, password, navigate)}/>
         
         <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/'/>
       </Form>
