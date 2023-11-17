@@ -5,12 +5,18 @@ import { useAuth } from '../../hooks/authContext';
 import { ButtonText } from '../../components/ButtonText';
 import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
 import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
+import { useState } from 'react';
 
 export function SignIn() {
 
-  const data = useAuth();
-  console.log(data);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const {SignIn} = useAuth();
+
+  function executeSignIn() {
+    SignIn({email, password});
+  }
 
   return (
     <Container>
@@ -24,13 +30,17 @@ export function SignIn() {
 
         <Input labelName='Email' 
         placeholder='Exemplo: exemplo@exemplo.com.br'
-        type='email' />
+        type='email' 
+        onChange={e => setEmail(e.target.value)}
+        />
 
         <Input labelName='Senha' 
         placeholder='No mínimo 6 caracteres'
-        type='password' />
+        type='password' 
+        onChange={e => setPassword(e.target.value)}
+        />
 
-        <Button title='Entrar'/>
+        <Button title='Entrar' onClick={executeSignIn}/>
         
         <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Criar uma conta" to='/register'/>
       </Form>
