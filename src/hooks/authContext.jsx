@@ -34,7 +34,7 @@ function AuthProvider({children}) {
     const confirmSignOut = confirm("Tem certeza que deseja sair?")
 
     if(confirmSignOut) {
-      localStorage.removeItem("@estock:user");
+      localStorage.removeItem("@foodExplorer:user");
       setData({});
     } else {
       return
@@ -57,6 +57,7 @@ function AuthProvider({children}) {
       signOut,
       user: data.getUserByEmail
       }}>
+      {console.log("Valor de user:", data)}
       {children}
     </AuthContext.Provider>
   )
