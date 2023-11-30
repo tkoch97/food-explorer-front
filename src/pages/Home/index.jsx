@@ -14,7 +14,6 @@ export function Home() {
         <NavBar openMenu = {() => setIsMenuOpen(true)}/>
 
         <Menu 
-          isAdmin = '1'
           isMenuOpen = {isMenuOpen}
           closeMenu = {() => setIsMenuOpen(false)}
         />

@@ -57,7 +57,7 @@ function AuthProvider({children}) {
       signOut,
       user: data.getUserByEmail
       }}>
-      {console.log("Valor de user:", data)}
+      {/* {console.log("Valor de user:", data)} */}
       {children}
     </AuthContext.Provider>
   )
