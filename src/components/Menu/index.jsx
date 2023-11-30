@@ -3,9 +3,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
+import { useAuth } from "../../hooks/authContext.jsx";
 
 export function Menu(props) {
-  const {isAdmin, isMenuOpen, closeMenu} = props;
+  const {user} = useAuth();
+  const {isMenuOpen, closeMenu} = props;
+  const isAdmin = user.isAdmin;
   return(
     <Container data-menu-is-open = {isMenuOpen}>
 

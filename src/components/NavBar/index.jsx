@@ -8,9 +8,13 @@ import brandAdminMobile from "../../assets/brand-admin-mobile.svg";
 import brandNormalMobileAndDesktop from "../../assets/brand-normal-mobile-and-desktop.svg";
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
+import { useAuth } from "../../hooks/authContext";
 
 export function NavBar(props) {
-  const {isAdmin = 1, openMenu} = props;
+  const {user} = useAuth();
+
+  const {openMenu} = props;
+  const isAdmin = user.isAdmin;
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
 
@@ -32,7 +36,7 @@ export function NavBar(props) {
 
         <div className='buttonSpace'>
           {isDesktop && <Button title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }/>}
-          {!isDesktop && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
+          {!isDesktop && !isAdmin && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
         </div>
 
         {isDesktop && (
