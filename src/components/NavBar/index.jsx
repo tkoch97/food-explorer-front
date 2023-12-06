@@ -11,7 +11,7 @@ import { Button } from '../Button';
 import { useAuth } from "../../hooks/authContext";
 
 export function NavBar(props) {
-  const {user} = useAuth();
+  const {user, signOut } = useAuth();
 
   const {openMenu} = props;
   const isAdmin = user.isAdmin;
@@ -41,7 +41,7 @@ export function NavBar(props) {
 
         {isDesktop && (
         <SignOutButton>
-          <PiSignOut fontSize= '3.2rem' color='#fff'/>
+          <PiSignOut fontSize= '3.2rem' color='#fff' onClick={() => signOut()}/>
         </SignOutButton>
         )}
 

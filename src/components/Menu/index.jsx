@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { useAuth } from "../../hooks/authContext.jsx";
 
 export function Menu(props) {
-  const {user} = useAuth();
+  const {user, signOut} = useAuth();
   const {isMenuOpen, closeMenu} = props;
   const isAdmin = user.isAdmin;
   return(
@@ -28,7 +28,7 @@ export function Menu(props) {
             <ButtonText title="Novo Prato" />
           ) : null}
 
-          <ButtonText  title="Sair"/>
+          <ButtonText  title="Sair" onClick={() => signOut()}/>
 
         </Options>
       </Main>
