@@ -31,25 +31,19 @@ function AuthProvider({children}) {
   }
 
   function signOut() {
-    const confirmSignOut = confirm("Tem certeza que deseja sair?")
-
-    if(confirmSignOut) {
       localStorage.removeItem("@foodExplorer:user");
       setData({});
-    } else {
-      return
-    }
   }
 
   useEffect(() => {
-    const user = localStorage.getItem("foodExplorer:user");
-
+    const user = localStorage.getItem("@foodExplorer:user");
+    console.log("valor de user em authContext ->", user)
     if(user) {
       setData({
-        user: JSON.parse(user)
+        getUserByEmail: JSON.parse(user)
       });
     }
-  })
+  }, []);
 
   return(
     <AuthContext.Provider value={{
@@ -57,7 +51,6 @@ function AuthProvider({children}) {
       signOut,
       user: data.getUserByEmail
       }}>
-      {/* {console.log("Valor de user:", data)} */}
       {children}
     </AuthContext.Provider>
   )
