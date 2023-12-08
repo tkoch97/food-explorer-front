@@ -4,11 +4,12 @@ import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
 import { useAuth } from "../../hooks/authContext.jsx";
+import {USER_ROLE} from "../../utils/roles.js"
 
 export function Menu(props) {
   const {user, signOut} = useAuth();
   const {isMenuOpen, closeMenu} = props;
-  const isAdmin = user.isAdmin;
+  const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
   return(
     <Container data-menu-is-open = {isMenuOpen}>
 
