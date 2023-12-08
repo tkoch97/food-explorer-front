@@ -9,12 +9,13 @@ import brandNormalMobileAndDesktop from "../../assets/brand-normal-mobile-and-de
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import { useAuth } from "../../hooks/authContext";
+import {USER_ROLE} from "../../utils/roles";
 
 export function NavBar(props) {
   const {user, signOut } = useAuth();
 
   const {openMenu} = props;
-  const isAdmin = user.isAdmin;
+  const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
 

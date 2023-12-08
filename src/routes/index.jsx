@@ -18,7 +18,7 @@ export function Routes() {
       case USER_ROLE.CLIENT:
         return <ClientRoutes/>
       default:
-        return <ClientRoutes/>
+        return <AuthRoutes/>
     }
   }
   
