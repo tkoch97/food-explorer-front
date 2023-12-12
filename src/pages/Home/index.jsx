@@ -2,6 +2,7 @@ import { Footer } from '../../components/Footer';
 import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
 import { SectionHome } from '../../components/SectionHome';
+import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
 import { useState } from 'react';
 
@@ -29,7 +30,7 @@ export function Home() {
         </div>
 
         <SectionHome title='Refeições'>
-          
+          <DishCard/>
         </SectionHome>
 
         <SectionHome title='Bebidas'>
