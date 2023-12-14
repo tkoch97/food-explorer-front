@@ -31,6 +31,7 @@ export function Home() {
 
         <SectionHome title='Refeições'>
           <DishCard/>
+          <DishCard/>
         </SectionHome>
 
         <SectionHome title='Bebidas'>
