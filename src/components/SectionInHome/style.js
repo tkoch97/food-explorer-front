@@ -19,5 +19,16 @@ export const Container = styled.section`
     display: flex;
     flex-direction: row;
     gap: 2.7rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    @media(max-width: ${DEVICE_BREAKPOINTS.LG}) {
+      gap: 1.6rem;
+    }
   }
 `
