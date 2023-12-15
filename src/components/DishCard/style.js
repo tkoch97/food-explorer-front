@@ -13,7 +13,7 @@ export const Container = styled.div`
   width: 30.4rem;
 
   @media(max-width: ${DEVICE_BREAKPOINTS.LG}) {
-    width: 21.0rem;
+    min-width: 21.0rem;
   }
 `
   
@@ -48,6 +48,7 @@ export const DishTitle = styled.button`
   background: none;
   color: ${({theme}) => theme.COLORS.LIGHT_300};
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `

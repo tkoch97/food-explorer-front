@@ -1,7 +1,7 @@
 import { Footer } from '../../components/Footer';
 import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
-import { SectionHome } from '../../components/SectionHome';
+import { SectionInHome } from '../../components/SectionInHome';
 import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
 import { useState } from 'react';
@@ -29,18 +29,23 @@ export function Home() {
           </div>
         </div>
 
-        <SectionHome title='Refeições'>
+        <SectionInHome title='Refeições'>
           <DishCard/>
           <DishCard/>
-        </SectionHome>
+          <DishCard/>
+          <DishCard/>
+          <DishCard/>
+          <DishCard/>
+          <DishCard/>
+        </SectionInHome>
 
-        <SectionHome title='Bebidas'>
+        <SectionInHome title='Bebidas'>
 
-        </SectionHome>
+        </SectionInHome>
 
-        <SectionHome title='Sobremesas'>
+        <SectionInHome title='Sobremesas'>
 
-        </SectionHome>
+        </SectionInHome>
 
         
 
