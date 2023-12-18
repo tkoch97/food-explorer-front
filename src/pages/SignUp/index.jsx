@@ -13,7 +13,17 @@ export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleExecuteSignUp = async () => {
+    setIsLoading(true)
+    try {
+      executeSignUp(name, email, password, navigate);
+    } catch (error){
+      setIsLoading(false)
+    }
+  }
 
 
   return (
@@ -44,7 +54,7 @@ export function SignUp() {
         onChange ={e => setPassword(e.target.value)}
         />
 
-        <Button title='Criar conta' onClick={() => executeSignUp(name, email, password, navigate)}/>
+        <Button title='Criar conta' loading={isLoading} onClick={handleExecuteSignUp}/>
         
         <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/'/>
       </Form>
