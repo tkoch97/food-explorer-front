@@ -1,7 +1,6 @@
 import { api } from "../services/api"
 
 export function executeSignUp(name, email, password, navigate) {
-  
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   

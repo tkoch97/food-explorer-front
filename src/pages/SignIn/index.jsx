@@ -11,11 +11,18 @@ export function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const {SignIn} = useAuth();
 
-  function executeSignIn() {
-    SignIn({email, password});
+  const executeSignIn = async () => {
+    setIsLoading(true)
+    try{
+      await SignIn({email, password});
+      setIsLoading(false);
+    } catch (error){
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -40,7 +47,7 @@ export function SignIn() {
         onChange={e => setPassword(e.target.value)}
         />
 
-        <Button title='Entrar' onClick={executeSignIn}/>
+        <Button title='Entrar' loading={isLoading} onClick={executeSignIn}/>
         
         <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Criar uma conta" to='/register'/>
       </Form>
