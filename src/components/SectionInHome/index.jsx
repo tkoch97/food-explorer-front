@@ -32,16 +32,18 @@ export function SectionInHome(props) {
     <Container
       fontApplied="POPPINS_400_MEDIUM"
     >
-
       <p>{title}</p>
-      <button onClick={scrollLeft}>
-        <SlArrowLeft/>
-      </button>
-      <button onClick={scrollRight}>
-        <SlArrowRight/>
-      </button>
-      <div className="cardContainer" ref={cardContainerRef}>
-        {children}
+
+      <div className="content">
+        <button className="arrowLeft" onClick={scrollLeft}>
+          <SlArrowLeft/>
+        </button>
+        <button className="arrowRight" onClick={scrollRight}>
+          <SlArrowRight/>
+        </button>
+        <div className="cardContainer" ref={cardContainerRef}>
+          {children}
+        </div>
       </div>
 
 
