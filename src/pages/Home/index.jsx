@@ -39,13 +39,13 @@ export function Home() {
           <DishCard/>
         </SectionInHome>
 
-        <SectionInHome title='Bebidas'>
+        {/* <SectionInHome title='Bebidas'>
 
         </SectionInHome>
 
         <SectionInHome title='Sobremesas'>
 
-        </SectionInHome>
+        </SectionInHome> */}
 
         
 
