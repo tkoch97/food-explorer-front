@@ -5,12 +5,13 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakPoints';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
   padding: 2.4rem;
   justify-content: center;
   background-color: ${({theme}) => theme.COLORS.DARK_400};
   position: relative;
-  width: 30.4rem;
+  min-width: 30.4rem;
 
   @media(max-width: ${DEVICE_BREAKPOINTS.LG}) {
     min-width: 21.0rem;
@@ -57,6 +58,7 @@ export const DishDrescription = styled.div`
   ${props => applyFontStyle(props.fontApplied)};
   color: ${({theme}) => theme.COLORS.LIGHT_400};
   text-align: center;
+  max-width: 30.0rem;
 `
 
 export const DishPrice = styled.div`

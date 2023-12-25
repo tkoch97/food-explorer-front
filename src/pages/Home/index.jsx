@@ -4,11 +4,22 @@ import { Menu } from '../../components/Menu';
 import { SectionInHome } from '../../components/SectionInHome';
 import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api.js';
 
 export function Home() {
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dishes, setDishes] = useState([]);
+
+  useEffect(() => {
+    async function fetchDishes() {
+      const response = await api.get(`/dish`, {withCredentials:true});
+      setDishes(response.data)
+    }
+
+    fetchDishes();
+  }, []);
 
   return (
     <Container className='page'>
@@ -30,13 +41,14 @@ export function Home() {
         </div>
 
         <SectionInHome title='Refeições'>
-          <DishCard/>
-          <DishCard/>
-          <DishCard/>
-          <DishCard/>
-          <DishCard/>
-          <DishCard/>
-          <DishCard/>
+          {
+            dishes.map(dish => (
+             <DishCard 
+              key={String(dish.id)}
+              data={dish}
+             /> 
+            ))
+          }
         </SectionInHome>
 
         {/* <SectionInHome title='Bebidas'>
