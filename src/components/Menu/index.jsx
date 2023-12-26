@@ -11,6 +11,7 @@ export function Menu(props) {
   const {user, signOut} = useAuth();
   const {isMenuOpen, closeMenu} = props;
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
+
   return(
     <Container data-menu-is-open = {isMenuOpen}>
 
@@ -30,7 +31,7 @@ export function Menu(props) {
             <ButtonText title="Novo Prato" />
           ) : null}
 
-          <ButtonText  title="Sair" onClick={() => signOut()}/>
+          <ButtonText  title="Sair" onClick={() => {signOut()}} to='/'/>
 
         </Options>
       </Main>
