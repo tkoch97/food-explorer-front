@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import { useAuth } from "../../hooks/authContext";
 import {USER_ROLE} from "../../utils/roles";
+import { useNavigate } from "react-router-dom";
 
 export function NavBar(props) {
   const {user, signOut } = useAuth();
@@ -18,6 +19,13 @@ export function NavBar(props) {
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const logo = isAdmin ? (isDesktop ? brandAdminDesktop : brandAdminMobile) : brandNormalMobileAndDesktop;
+
+  const navigate = useNavigate();
+
+  function executeSignOut() {
+    signOut();
+    navigate("/");
+  }
 
   return (
     <Container isDesktop={isDesktop}>
@@ -42,7 +50,7 @@ export function NavBar(props) {
 
         {isDesktop && (
         <SignOutButton>
-          <PiSignOut fontSize= '3.2rem' color='#fff' onClick={() => signOut()}/>
+          <PiSignOut fontSize= '3.2rem' color='#fff' onClick={executeSignOut}/>
         </SignOutButton>
         )}
 
