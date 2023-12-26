@@ -5,6 +5,7 @@ import { SearchBarr } from '../../components/SearchBarr/index.jsx';
 import PropTypes from 'prop-types';
 import { useAuth } from "../../hooks/authContext.jsx";
 import {USER_ROLE} from "../../utils/roles.js"
+import {Footer} from '../Footer';
 
 export function Menu(props) {
   const {user, signOut} = useAuth();
@@ -33,7 +34,10 @@ export function Menu(props) {
 
         </Options>
       </Main>
-
+      
+      <div className="footer">
+        <Footer/>
+      </div>
     </Container>
   )
 }
