@@ -10,8 +10,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  position: absolute;
-  z-index: 2;
+  position: fixed;
+  z-index: 4;
   width: 100vw;
   height: 100vh;
 
@@ -21,7 +21,12 @@ export const Container = styled.div`
   &[data-menu-is-open="true"] {
     transform: translateX(0);
   }
-  `
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+`
 
 export const Header = styled.div`
   background: ${({theme}) => theme.COLORS.DARK_700};
