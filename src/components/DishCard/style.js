@@ -34,6 +34,10 @@ export const DishImg = styled.div`
   display: flex;
   justify-content: center;
 
+  :hover {
+    cursor: pointer;
+  }
+
   > img {
     width: 20.0rem;
   
@@ -52,6 +56,8 @@ export const DishTitle = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+
 `
 
 export const DishDrescription = styled.div`

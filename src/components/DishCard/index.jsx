@@ -17,16 +17,19 @@ import {
 } from "./style";
 import { useMediaQuery } from "react-responsive";
 import { api } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 export function DishCard(props) {
   const {data} = props;
   const {user} = useAuth();
 
-  console.log(data)
   const dishImage = `
   ${api.defaults.baseURL}/files/${data.image}`;
+
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
   const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+  const navigate = useNavigate();
 
   return(
     <Container>
@@ -35,11 +38,14 @@ export function DishCard(props) {
         {isAdmin ? <PiPencilSimple/> : <FaRegHeart />}
       </FavoriteOrEditButton>
 
-      <DishImg>
+      <DishImg onClick={() => navigate(`/dish-details/${data.id}`)}>
         <img src={dishImage} alt={`Foto de ${data.title}`}/>
-      </DishImg>
+      </DishImg >
 
-      <DishTitle fontApplied= {isDesktop ? "POPPINS_300_BOLD" : "POPPINS_100_MEDIUM"}>
+      <DishTitle 
+        onClick={() => navigate(`/dish-details/${data.id}`)} 
+        fontApplied= {isDesktop ? "POPPINS_300_BOLD" : "POPPINS_100_MEDIUM"
+      }>
         {`${data.name} >`}
       </DishTitle>
 
