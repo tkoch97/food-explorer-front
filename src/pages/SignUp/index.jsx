@@ -25,6 +25,13 @@ export function SignUp() {
     }
   }
 
+  const signUpByEnterButton = async (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleExecuteSignUp();
+    }
+  };
+
 
   return (
     <Container>
@@ -52,6 +59,7 @@ export function SignUp() {
         placeholder='No mínimo 6 caracteres'
         type='password' 
         onChange ={e => setPassword(e.target.value)}
+        onKeyDown={signUpByEnterButton}
         />
 
         <Button title='Criar conta' loading={isLoading} onClick={handleExecuteSignUp}/>
