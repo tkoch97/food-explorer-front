@@ -25,6 +25,13 @@ export function SignIn() {
     }
   }
 
+  const signInByEnterButton = async (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      executeSignIn();
+    }
+  };
+
   return (
     <Container>
 
@@ -45,6 +52,7 @@ export function SignIn() {
         placeholder='No mínimo 6 caracteres'
         type='password' 
         onChange={e => setPassword(e.target.value)}
+        onKeyDown={signInByEnterButton}
         />
 
         <Button title='Entrar' loading={isLoading} onClick={executeSignIn}/>
