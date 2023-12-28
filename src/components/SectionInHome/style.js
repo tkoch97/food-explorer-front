@@ -35,12 +35,12 @@ export const Container = styled.section`
   
     &::before {
         left: 0;
-        background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        background: linear-gradient(to right, rgba(0, 10, 15, 1), rgba(0, 0, 0, 0));
     }
   
     &::after {
         right: 0;
-        background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        background: linear-gradient(to left, rgba(0, 10, 15, 1), rgba(0, 0, 0, 0));
     }
   
     > button {
