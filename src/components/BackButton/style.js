@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 10%;
 
   font-family: 'Poppins';
   font-size: 2.4rem;

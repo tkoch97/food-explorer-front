@@ -57,7 +57,6 @@ export const DishTitle = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
 `
 
 export const DishDrescription = styled.div`
