@@ -32,7 +32,7 @@ export function DishDetails() {
         closeMenu = {() => setIsMenuOpen(false)}
       />
 
-      {dishData && <DishContent/>}
+      {dishData && <DishContent data={dishData}/>}
 
       <div className='footer'>
         <Footer />
