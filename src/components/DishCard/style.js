@@ -87,16 +87,4 @@ export const DishBuy = styled.div`
       height: 3.2rem;
     }
   }
-
-  .count {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 1.4rem;
-    
-    > p {
-      ${props => applyFontStyle(props.fontApplied)};
-    }
-  }
 `

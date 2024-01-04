@@ -33,7 +33,7 @@ export function NavBar(props) {
         <FiMenu onClick={openMenu}/>
       </OpenMenuButtonSpace>
 
-      <Brand className='brandLogo'>
+      <Brand className='brandLogo' onClick={() => navigate('/')}>
         <img src={logo}  alt="Logo Food Explorer"/>
       </Brand>
 

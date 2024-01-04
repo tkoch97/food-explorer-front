@@ -69,6 +69,7 @@ export const OpenMenuButtonSpace = styled.button`
 
 `
 export const Brand = styled.div`
+  cursor: pointer;
   @media(max-width: ${DEVICE_BREAKPOINTS.XS}) {
     display: flex;
     justify-content: center;

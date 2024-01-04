@@ -4,8 +4,6 @@ import { USER_ROLE } from "../../utils/roles";
 import { useAuth } from "../../hooks/authContext";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { PiPencilSimple } from "react-icons/pi";
-import { IoIosRemove } from "react-icons/io";
-import { IoAddOutline } from "react-icons/io5";
 import { 
   Container, 
   FavoriteOrEditButton,
@@ -18,6 +16,7 @@ import {
 import { useMediaQuery } from "react-responsive";
 import { api } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { Accountant } from '../Accountant';
 
 export function DishCard(props) {
   const {data} = props;
@@ -61,11 +60,7 @@ export function DishCard(props) {
 
       {!isAdmin && (
         <DishBuy className="buySpace" fontApplied= {isDesktop ? "ROBOTO_BIG_BOLD" : "ROBOTO_SMALL_REGULAR"}>
-          <div className="count" >
-            <IoIosRemove/>
-            <p>00</p>
-            <IoAddOutline/>
-          </div>
+          <Accountant/>
           <div className="includeButton">
             <Button title="Incluir"/>
           </div>
