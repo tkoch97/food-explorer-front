@@ -47,8 +47,14 @@ export const Container = styled.div`
 
         @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
           display: grid;
-          grid-template-columns: 30% 33% 25%;
+          grid-template-columns: 1fr 1fr 1fr;
           gap: 2.0rem;
+        }
+
+        @media (max-width: 369px) {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.0rem;
         }
       }
     }
