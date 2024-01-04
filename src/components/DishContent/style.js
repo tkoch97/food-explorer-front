@@ -37,6 +37,20 @@ export const Container = styled.div`
       @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         align-items: center;
       }
+
+      .dishInformations_ingredients {
+        width: 100%;
+        max-width: 40.0rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+          display: grid;
+          grid-template-columns: 30% 33% 25%;
+          gap: 2.0rem;
+        }
+      }
     }
   }
 

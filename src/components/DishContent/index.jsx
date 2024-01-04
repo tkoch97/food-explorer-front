@@ -1,21 +1,22 @@
 import { BackButton } from '../BackButton/index.jsx'
-import { useAuth } from "../../hooks/authContext";
+// import { useAuth } from "../../hooks/authContext";
 import { Container, DishImg, DishTitle, DishDescription } from './style.js'
-import { USER_ROLE } from "../../utils/roles";
+// import { USER_ROLE } from "../../utils/roles";
 import { api } from '../../services/api';
 import PropTypes from 'prop-types';
+import { IngredientTag } from '../IngredientTag/index.jsx';
 
 
 
 
 export function DishContent(props) {
-  const {user} = useAuth();
+  // const {user} = useAuth();
   const {data} = props;
 
   const dishImage = `
   ${api.defaults.baseURL}/files/${data.dish.image}`;
 
-  const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
+  // const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
 
   return (
     <Container>
@@ -33,7 +34,15 @@ export function DishContent(props) {
 
           <DishDescription fontApplied="POPPINS_300_REGULAR">
             {data.dish.description}
-          </DishDescription>  
+          </DishDescription>
+
+          <div className='dishInformations_ingredients'>
+            {data.ingredients.map(ingredient => (
+              <IngredientTag key={ingredient.id} text={ingredient.name}/>
+            ))}
+          </div>
+
+
 
         </div>
 
