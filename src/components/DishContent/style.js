@@ -40,14 +40,14 @@ export const Container = styled.div`
 
       .dishInformations_ingredients {
         width: 100%;
-        max-width: 40.0rem;
         display: flex;
         flex-wrap: wrap;
         gap: 1.2rem;
-
+        
         @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
+          max-width: 40.0rem;
           gap: 2.0rem;
         }
 

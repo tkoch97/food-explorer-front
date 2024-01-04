@@ -5,6 +5,7 @@ import { Container, DishImg, DishTitle, DishDescription } from './style.js'
 import { api } from '../../services/api';
 import PropTypes from 'prop-types';
 import { IngredientTag } from '../IngredientTag/index.jsx';
+import { Accountant } from '../Accountant/index.jsx';
 
 
 
@@ -42,8 +43,9 @@ export function DishContent(props) {
             ))}
           </div>
 
-
-
+          <div className='AddTooCart'>
+            <Accountant/>
+          </div>
         </div>
 
 
