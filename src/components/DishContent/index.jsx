@@ -1,4 +1,4 @@
-import { BackButton } from '../BackButton/index.jsx'
+
 // import { useAuth } from "../../hooks/authContext";
 import { Container, DishImg, DishTitle, DishDescription } from './style.js'
 // import { USER_ROLE } from "../../utils/roles";
@@ -21,9 +21,9 @@ export function DishContent(props) {
 
   return (
     <Container>
-      <BackButton/>
 
       <main className='main'>
+        
         <DishImg>
           <img src={dishImage} alt={`Imagem de ${data.dish.title}`} />
         </DishImg>
@@ -47,7 +47,6 @@ export function DishContent(props) {
             <Accountant/>
           </div>
         </div>
-
 
       </main>
       

@@ -8,6 +8,7 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   max-width: 10%;
+  align-self: flex-start;
 
   font-family: 'Poppins';
   font-size: 2.4rem;

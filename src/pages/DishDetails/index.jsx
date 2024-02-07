@@ -1,6 +1,7 @@
 import {Container} from './style';
 import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
+import { BackButton } from '../../components/BackButton/index'
 import { Footer } from '../../components/Footer';
 import { DishContent } from '../../components/DishContent';
 import { useState, useEffect } from 'react';
@@ -32,7 +33,12 @@ export function DishDetails() {
         closeMenu = {() => setIsMenuOpen(false)}
       />
 
-      {dishData && <DishContent data={dishData}/>}
+      <div className="page-main">
+        <BackButton/>
+
+        {dishData && <DishContent data={dishData}/>}
+      </div>
+
 
       <div className='footer'>
         <Footer />
