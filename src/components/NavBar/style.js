@@ -15,7 +15,7 @@ export const Container = styled.div`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     justify-content: space-between;
     align-items: center;
-    padding: 2.4rem 12.3rem;
+    padding: 2.4rem 9.0rem;
     gap: 3.2rem;
   }
 
@@ -26,9 +26,9 @@ export const Container = styled.div`
     border-radius: 0.5rem;
   }
 
-  .buttonSpace {
+  .requestsButtonSpace {
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      width: 40.0rem;
+      width: 50.0rem;
     }
     @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
       > svg {

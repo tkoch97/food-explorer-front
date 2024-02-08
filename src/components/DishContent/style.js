@@ -4,25 +4,17 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakPoints';
 
 export const Container = styled.div`
 
-  padding: 13.0rem 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 4.0rem;
-  
-  @media(min-width: ${DEVICE_BREAKPOINTS.SM}) {
-    padding: 15.0rem 3.0rem;
-  }
-
-  @media(min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 15.0rem 12.0rem;
-    gap: 1.6rem;
-  }
 
   .main {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 4.8rem;
+
+    max-width: 110.0rem;
     
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
       flex-direction: column;
@@ -37,7 +29,7 @@ export const Container = styled.div`
       @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         align-items: center;
       }
-
+      
       .dishInformations_ingredients {
         width: 100%;
         display: flex;
@@ -50,12 +42,24 @@ export const Container = styled.div`
           max-width: 40.0rem;
           gap: 2.0rem;
         }
-
+        
         @media (max-width: 369px) {
           display: flex;
           flex-wrap: wrap;
           gap: 1.0rem;
         }
+      }
+      
+      .AddTooCart {
+        display: flex;
+        gap: 3.3rem;
+
+        @media (max-width: 363px) {
+          margin-top: 1.0rem;
+          gap: 3.0rem;
+          flex-direction: column;
+        }
+        
       }
     }
   }

@@ -5,6 +5,8 @@ import heroImageBackgroundDesktop from '../../assets/banner-home-desktop.png';
 export const Container = styled.div `
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  position: relative;
 
   @media(min-width: 1280px) {
     align-items: center;

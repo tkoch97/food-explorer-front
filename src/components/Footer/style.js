@@ -9,6 +9,9 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   background: ${({theme}) => theme.COLORS.DARK_600};
+
+  position: absolute;
+  bottom: 0;
   
   > p {
     ${props => applyFontStyle(props.fontApplied)};

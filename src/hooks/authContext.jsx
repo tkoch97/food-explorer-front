@@ -13,7 +13,6 @@ function AuthProvider({children}) {
 
     try {
       const response = await api.post('/sessions', { email, password }, {withCredentials:true});
-      console.log("valor de response na funnção signIn ->", response.data);
       const { getUserByEmail } = response.data;
 
       localStorage.setItem("@foodExplorer:user", JSON.stringify(getUserByEmail))
