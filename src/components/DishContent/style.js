@@ -29,7 +29,7 @@ export const Container = styled.div`
       @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
         align-items: center;
       }
-
+      
       .dishInformations_ingredients {
         width: 100%;
         display: flex;
@@ -42,12 +42,24 @@ export const Container = styled.div`
           max-width: 40.0rem;
           gap: 2.0rem;
         }
-
+        
         @media (max-width: 369px) {
           display: flex;
           flex-wrap: wrap;
           gap: 1.0rem;
         }
+      }
+      
+      .AddTooCart {
+        display: flex;
+        gap: 3.3rem;
+
+        @media (max-width: 363px) {
+          margin-top: 1.0rem;
+          gap: 3.0rem;
+          flex-direction: column;
+        }
+        
       }
     }
   }
