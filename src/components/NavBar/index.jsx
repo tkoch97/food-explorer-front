@@ -43,7 +43,7 @@ export function NavBar(props) {
         </div>
         )}
 
-        <div className='buttonSpace'>
+        <div className='requestsButtonSpace'>
           {isDesktop && <Button title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }/>}
           {!isDesktop && !isAdmin && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
         </div>
