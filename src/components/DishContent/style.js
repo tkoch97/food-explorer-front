@@ -53,13 +53,25 @@ export const Container = styled.div`
       .AddTooCart {
         display: flex;
         gap: 3.3rem;
-
+        width: 100%;
+        max-height: 4.0rem;
+        
         @media (max-width: 363px) {
           margin-top: 1.0rem;
-          gap: 3.0rem;
-          flex-direction: column;
+          gap: 1.0rem;
+          flex-direction: row;
         }
-        
+
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+          justify-content: center;
+        }
+
+        .includeButtonSpace {
+          @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            width: 100%;
+          }
+        }
+
       }
     }
   }

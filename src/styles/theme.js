@@ -41,9 +41,9 @@ export default {
 // Para evitar repetição de código, criar um utilitário de função para gerar um estilo de fonte padrão e receber modificações pontuais.
 const generateFontStyle = (options) => css`
   font-family: ${options.family || 'Poppins'};
-  font-weight: ${options.weight || 500 /*medium weight*/};
+  font-weight: ${options.weight || 500};
   font-size: ${options.size || '1.4rem'};
-  line-height: ${options.lineHeight || '140%'};
+  line-height: ${options.lineHeight || '130%'};
   letter-spacing: ${options.letterSpacing || '0%'};
   text-decoration: none;
 `;
