@@ -10,7 +10,7 @@ export const Container = styled.button`
   align-items: center;
   justify-content: center;
 
-  padding: 1.2rem 3.2rem;
+  padding: 1.2rem 2.0rem;
   border: none;
   border-radius: 0.5rem;
   color: ${({theme}) => theme.COLORS.LIGHT_100};
