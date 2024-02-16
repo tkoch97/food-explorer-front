@@ -44,7 +44,11 @@ export function NavBar(props) {
         )}
 
         <div className='requestsButtonSpace'>
-          {isDesktop && <Button title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }/>}
+          {isDesktop && 
+          <Button 
+          title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }
+          onClick={isAdmin ? () => navigate('/dish-create/') : () => navigate('/')}
+          />}
           {!isDesktop && !isAdmin && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
         </div>
 
