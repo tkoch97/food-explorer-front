@@ -21,11 +21,6 @@ export const Container = styled.div`
   &[data-menu-is-open="true"] {
     transform: translateX(0);
   }
-
-  .footer {
-    position: fixed;
-    bottom: 0;
-  }
 `
 
 export const Header = styled.div`
