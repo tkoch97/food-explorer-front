@@ -4,6 +4,7 @@ import { NavBar } from '../../components/NavBar';
 import { Menu } from '../../components/Menu';
 import { Footer } from '../../components/Footer';
 import { BackButton } from '../../components/BackButton';
+import { CreateOrEditDishForm } from "../../components/CreateOrEditDishForm";
 
 
 export function CreateDish() {
@@ -22,7 +23,7 @@ export function CreateDish() {
       <div className="page-main">
         <BackButton/>
 
-        
+        <CreateOrEditDishForm type='create'/>
       </div>
 
       <Footer/>

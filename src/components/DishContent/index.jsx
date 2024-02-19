@@ -10,9 +10,6 @@ import { IngredientTag } from '../IngredientTag/index.jsx';
 import { Accountant } from '../Accountant/index.jsx';
 import { Button } from '../Button/index.jsx';
 
-
-
-
 export function DishContent(props) {
   const {user} = useAuth();
   const {data} = props;
