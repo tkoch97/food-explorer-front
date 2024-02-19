@@ -36,7 +36,6 @@ function AuthProvider({children}) {
 
   useEffect(() => {
     const user = localStorage.getItem("@foodExplorer:user");
-    console.log("valor de user em authContext ->", user)
     if(user) {
       setData({
         getUserByEmail: JSON.parse(user)

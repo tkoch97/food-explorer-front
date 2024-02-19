@@ -6,11 +6,14 @@ import PropTypes from 'prop-types';
 import { useAuth } from "../../hooks/authContext.jsx";
 import {USER_ROLE} from "../../utils/roles.js"
 import {Footer} from '../Footer';
+import { useNavigate } from "react-router-dom";
 
 export function Menu(props) {
+  const navigate = useNavigate();
   const {user, signOut} = useAuth();
   const {isMenuOpen, closeMenu} = props;
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
+
 
   return(
     <Container data-menu-is-open = {isMenuOpen}>
@@ -27,11 +30,11 @@ export function Menu(props) {
 
         <Options fontApplied="POPPINS_300_REGULAR">
 
-          {isAdmin ? (
-            <ButtonText title="Novo Prato" />
-          ) : null}
+          {isAdmin && <ButtonText 
+          onClick={(e) => {e.preventDefault(); navigate('/dish-create/');}} 
+          title="Novo Prato"/>}
 
-          <ButtonText  title="Sair" onClick={() => {signOut()}} to='/'/>
+          <ButtonText  title="Sair" onClick={() => {signOut()}}/>
 
         </Options>
       </Main>
@@ -44,7 +47,6 @@ export function Menu(props) {
 }
 
 Menu.propTypes = {
-  isAdmin: PropTypes.bool,
   closeMenu: PropTypes.bool,
   isMenuOpen: PropTypes.bool,
 };
