@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
-import { Container } from './style';
+import { Container, Form } from './style';
 import { useMediaQuery } from "react-responsive";
+import { Input } from '../Input';
+import { SelectDishType } from '../SelectDishType';
 
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
+
+  const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 
@@ -13,6 +17,28 @@ export function CreateOrEditDishForm (props) {
       <p >
         {type === "create" ? (isDesktop ? 'Adicionar prato' : 'Novo prato') : 'Editar prato'}
       </p>
+
+      <Form>
+        <div className='basicDetails'>
+          <Input labelName='Nome'
+          placeholder='Ex.: Salada Ceasar'
+          type='text'
+          />
+
+          <SelectDishType values={optionsInSelect}/>
+        </div>
+          <Input
+            labelName='Preço'
+            placeholder='R$ 00,00'
+            type='text'
+          />
+        <div className='ingredientsAndPrice'>
+          
+        </div>
+
+        <div className='additionalInformations'>
+        </div>
+      </Form>
     </Container>
   )
 }
