@@ -6,10 +6,10 @@ export function SelectDishType(props) {
   const {values} = props;
 
   return(
-    <Container>
+    <Container fontApplied="ROBOTO_SMALL_REGULAR">
       <label>
-        Preço
-        <select>
+        Categoria
+        <select name='category'>
         {values.map((value, index) => (
         <option key={index} value={value}>
           {value}

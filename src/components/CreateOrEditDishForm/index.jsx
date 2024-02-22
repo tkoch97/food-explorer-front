@@ -30,7 +30,7 @@ export function CreateOrEditDishForm (props) {
           <Input
             labelName='Preço'
             placeholder='R$ 00,00'
-            type='text'
+            type='number'
           />
         <div className='ingredientsAndPrice'>
           
