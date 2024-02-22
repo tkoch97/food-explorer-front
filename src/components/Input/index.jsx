@@ -2,7 +2,7 @@ import { Container } from "./style";
 import PropTypes from 'prop-types';
 
 export function Input(props) {
-  const {labelName, ...rest} = props
+  const {labelName, type, ...rest} = props
   return(
     <Container fontApplied="ROBOTO_SMALL_REGULAR">
 
@@ -11,7 +11,7 @@ export function Input(props) {
       </label>
 
       <div className="inputSpace">
-        <input id={`input${labelName.replace(/\s+/g, '_')}`} {...rest}/>
+        <input id={`input${labelName.replace(/\s+/g, '_')}`} type={type} {...rest}/>
       </div>
 
     </Container>
@@ -19,5 +19,6 @@ export function Input(props) {
 }
 
 Input.propTypes = {
-  labelName: PropTypes.string
+  labelName: PropTypes.string,
+  type: PropTypes.string,
 };
