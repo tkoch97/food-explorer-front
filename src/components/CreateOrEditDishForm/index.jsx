@@ -5,6 +5,7 @@ import { Input } from '../Input';
 import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
 import { useState } from 'react';
+import { Button } from '../Button';
 
 export function CreateOrEditDishForm (props) {
 
@@ -41,6 +42,15 @@ export function CreateOrEditDishForm (props) {
 
         <div className='additionalInformations'>
           <DishDescriptionArea placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
+        </div>
+
+        <div className='actionButtons'>
+          <div className="deleteDishButton">
+            {type === 'edit' ? <DeleteDishButton/> : null}
+          </div>
+          <div className="saveChangesButton">
+            <Button title='Salvar alterações'/>
+          </div>
         </div>
 
       </Form>
