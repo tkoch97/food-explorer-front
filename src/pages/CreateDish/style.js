@@ -20,7 +20,7 @@ export const Container = styled.div`
       padding: 15.0rem 5.0rem;
     }
 
-    @media(max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    @media(max-width: 460px) {
       padding: 12.0rem 2.0rem;
     }
 

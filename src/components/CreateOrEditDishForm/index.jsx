@@ -6,6 +6,7 @@ import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
 import { useState } from 'react';
 import { Button } from '../Button';
+import { DeleteDishButton } from '../DeleteDishButton';
 
 export function CreateOrEditDishForm (props) {
 
@@ -14,6 +15,7 @@ export function CreateOrEditDishForm (props) {
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const isVerySmallScreen = useMediaQuery({ maxWidth: 365 });
 
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">
@@ -24,6 +26,7 @@ export function CreateOrEditDishForm (props) {
       <Form>
 
         <div className='basicDetails'>
+
           <Input labelName='Nome'
           placeholder='Ex.: Salada Ceasar'
           type='text'
@@ -46,10 +49,10 @@ export function CreateOrEditDishForm (props) {
 
         <div className='actionButtons'>
           <div className="deleteDishButton">
-            {type === 'edit' ? <DeleteDishButton/> : null}
+            {type === 'edit' ? <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}/> : null}
           </div>
           <div className="saveChangesButton">
-            <Button title='Salvar alterações'/>
+            <Button title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}/>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 import { applyFontStyle } from '../../styles/theme';
-import {DEVICE_BREAKPOINTS} from '../../styles/deviceBreakPoints';
 
 export const Container = styled.div`
 
@@ -26,15 +25,19 @@ export const Form = styled.form`
   .ingradientsAndPrice {display: flex;}
 
   .actionButtons {
-    max-width: 34.0rem;
-    min-width: 32.0rem;
+    max-width: 37.0rem;
+    min-width: 36.0rem;
     display: flex;
     align-self: flex-end;
     justify-content: flex-end;
     gap: 3.2rem;
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    @media (max-width: 460px) {
       min-width: 100%;
+    }
+
+    @media (max-width: 386px) {
+      gap: 1.0rem;
     }
 
     .deleteDishButton {
