@@ -4,9 +4,10 @@ import { useMediaQuery } from "react-responsive";
 import { Input } from '../Input';
 import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
+import { UploadImage } from '../UploadImage';
 
 export function CreateOrEditDishForm (props) {
 
@@ -27,12 +28,24 @@ export function CreateOrEditDishForm (props) {
 
         <div className='basicDetails'>
 
-          <Input labelName='Nome'
-          placeholder='Ex.: Salada Ceasar'
-          type='text'
-          />
+          <div className="uploadImageButton">
+            <UploadImage labelName='Imagem do prato'
+            buttonTitle={type === 'edit' ? 
+            (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
+            />
+          </div>
 
-          <SelectDishType values={optionsInSelect}/>
+          <div className="dishNameInput">
+            <Input labelName='Nome'
+            placeholder='Ex.: Salada Ceasar'
+            type='text'
+            />
+          </div>
+
+          <div className="dishTypeSelect">
+            <SelectDishType values={optionsInSelect}/>
+          </div>
+
         </div>
 
         <div className='ingredientsAndPrice'>

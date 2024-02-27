@@ -11,7 +11,11 @@ export function Input(props) {
       </label>
 
       <div className="inputSpace">
-        <input id={`input${labelName.replace(/\s+/g, '_')}`} type={type} {...rest}/>
+        <input 
+        id={`input${labelName.replace(/\s+/g, '_')}`} 
+        type={type}
+        {...rest}
+        />
       </div>
 
     </Container>

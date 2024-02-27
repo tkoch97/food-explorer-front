@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { applyFontStyle } from '../../styles/theme';
+// import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakPoints';
 
 export const Container = styled.div`
 
@@ -20,7 +21,35 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 3.2rem;
 
-  .basicDetails {display: flex;}
+  .basicDetails {
+    display: flex;
+    gap: 3.2rem;
+
+    .uploadImageButton {
+      width: 30%;
+    }
+    .dishNameInput {
+      width: 50%;
+    }
+    .dishTypeSelect {
+      width: 40%;
+    }
+    
+    @media (max-width: 790px) {
+      flex-direction: column;
+      
+      .uploadImageButton {
+        width: 100%;
+      }
+      .dishNameInput {
+        width: 100%;
+      }
+      .dishTypeSelect {
+        width: 100%;
+      }
+
+    }
+  }
 
   .ingradientsAndPrice {display: flex;}
 
