@@ -51,7 +51,32 @@ export const Form = styled.form`
     }
   }
 
-  .ingradientsAndPrice {display: flex;}
+  .ingredientsAndPrice {
+    display: flex;
+    flex-direction: row;
+    gap: 3.2rem;
+
+    .ingredients {
+      width: 80%;
+    }
+
+    .price {
+      width: 20%;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      
+      .ingredients {
+        width: 100%;
+      }
+      .price {
+        width: 100%;
+      }
+
+    }
+  
+  }
 
   .actionButtons {
     max-width: 37.0rem;
