@@ -8,6 +8,7 @@ import { DishDescriptionArea } from '../DishDescriptionArea';
 import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
+import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 
 export function CreateOrEditDishForm (props) {
 
@@ -49,11 +50,19 @@ export function CreateOrEditDishForm (props) {
         </div>
 
         <div className='ingredientsAndPrice'>
-          <Input className='priceInput'
-            labelName='Preço'
-            placeholder='R$ 00,00'
-            type='number'
-          />
+
+          <div className="ingredients">
+            <FieldToInsertDishIngredients/>
+          </div>
+
+          <div className="price">
+            <Input className='priceInput'
+              labelName='Preço'
+              placeholder='R$ 00,00'
+              type='number'
+            />
+          </div>
+
         </div>
 
         <div className='additionalInformations'>
