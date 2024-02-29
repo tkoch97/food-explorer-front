@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { applyFontStyle } from '../../styles/theme';
 
 export const Container = styled.div`
-
-width: 100%;
+  min-width: 100%;
+  
   ${props => applyFontStyle(props.fontApplied)};
   
   > label {
@@ -12,7 +12,7 @@ width: 100%;
     align-items: left;
     gap: 0.8rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
-
+    
     .spaceToAgroupIngredientsTags {
       display: flex;
       align-items: center;
@@ -24,28 +24,30 @@ width: 100%;
       width: 100%;
       min-height: 4.8rem;
 
-      .tagToInsertOrShowIngredient {
+      .tagToInsertIngredient {
         display: flex;
         align-items: center;
+        gap: .3rem;
 
-        background: ${({theme, isNew}) => isNew ? "none" : theme.COLORS.LIGHT_600};
+        background: none;
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         
-        border: ${({theme, isNew}) => isNew ? `0.1rem dashed ${theme.COLORS.LIGHT_500}` : "none"};
-        border-radius: 1.0rem;
+        border: ${({theme}) => `0.1rem dashed ${theme.COLORS.LIGHT_500}`};
+        border-radius: .8rem;
 
         > button {
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           border: none;
           background: none;
-          color: ${({theme, isNew}) => isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
-          padding-right: 1.6rem;
+          color: ${({theme}) => theme.COLORS.LIGHT_500};
+          margin-right: 1.6rem;
+          cursor: pointer;
         }
 
         > input {
           height: 3.2rem;
-          width: auto;
-          font-size: clamp(0.8rem, 0.8rem + 1vw, 1.6rem);
+          width: clamp(5.0rem, 8.0rem + 1vw, 9.0rem);
+          font-size: clamp(1.2rem, 1.0rem + 1vw, 1.6rem);
           padding: .8rem 0rem .8rem 1.6rem;
           color: ${({theme}) => theme.COLORS.LIGHT_100};
           background: none;

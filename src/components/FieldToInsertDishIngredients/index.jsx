@@ -1,34 +1,61 @@
 import {Container} from './style';
 import {FiPlus, FiX} from 'react-icons/fi';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 export function FieldToInsertDishIngredients(props) {
 
-  const {isNew = 1, value, onClick, ...rest} = props;
+  const {value, onClick, ...rest} = props;
 
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState('');
+
+  function InsertNewIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient])
+    setNewIngredient('');
+  }
+  
+  function handleToInsertNewIngredient() {
+    if(newIngredient.trim() !== '') {
+      InsertNewIngredient()
+    } else {
+      alert('É necessário que o campo esteja preenchido para adicionar um novo ingrediente.')
+    }
+  }
+  
+  
   return(
-    <Container fontApplied="ROBOTO_SMALL_REGULAR" isNew={isNew}>
+    <Container fontApplied="ROBOTO_SMALL_REGULAR">
 
       <label>
         Ingredientes
         <div className="spaceToAgroupIngredientsTags">
 
-          <div className="tagToInsertOrShowIngredient" >
+          <ul className="ingredientsTagsExistentAndInserted">
+
+          </ul>
+
+          <div className="tagToInsertIngredient" >
             
             <input
               type="text"
-              value={value}
-              readOnly={!isNew}
+              value={newIngredient}
               placeholder='Adicionar'
+              onChange={e => setNewIngredient(e.target.value)}
+              onKeyDown={e => {
+                if(e.key === "Enter") {
+                  handleToInsertNewIngredient();
+                }
+              }}
               {...rest}
-            />
+              />
 
             <button 
               type="button"
-              className={isNew ? "button-add" : "button-delete"}
-              onClick={onClick}
+              className="button-add"
+              onClick={() => handleToInsertNewIngredient()}
             >
-              {isNew ? <FiPlus/> : <FiX/>}
+              <FiPlus/>
             </button>
 
           </div>
