@@ -11,15 +11,18 @@ export function FieldToInsertDishIngredients(props) {
   const [newIngredient, setNewIngredient] = useState('');
 
   function InsertNewIngredient() {
-    setIngredients(prevState => [...prevState, newIngredient])
-    setNewIngredient('');
-  }
-  
-  function handleToInsertNewIngredient() {
     if(newIngredient.trim() !== '') {
-      InsertNewIngredient()
+      setIngredients(prevState => [...prevState, newIngredient])
+      setNewIngredient('');
     } else {
       alert('É necessário que o campo esteja preenchido para adicionar um novo ingrediente.')
+    }
+  }
+
+  const  InsertNewIngredientByEnterButton = async (e) => {
+    if(e.key === "Enter") {
+      e.preventDefault()
+      InsertNewIngredient();
     }
   }
   
@@ -31,9 +34,18 @@ export function FieldToInsertDishIngredients(props) {
         Ingredientes
         <div className="spaceToAgroupIngredientsTags">
 
-          <ul className="ingredientsTagsExistentAndInserted">
-
-          </ul>
+            {
+              ingredients.map( (ingredient, index) => (
+                <div className="tagIngredient" key={String(index)}>
+                  <p className="ingredientName">
+                    {ingredient}
+                  </p>
+                  <button className="removeIngredient">
+                    <FiX/>
+                  </button>
+                </div>
+              ) )
+            }
 
           <div className="tagToInsertIngredient" >
             
@@ -43,17 +55,15 @@ export function FieldToInsertDishIngredients(props) {
               placeholder='Adicionar'
               onChange={e => setNewIngredient(e.target.value)}
               onKeyDown={e => {
-                if(e.key === "Enter") {
-                  handleToInsertNewIngredient();
-                }
+                InsertNewIngredientByEnterButton(e);
               }}
               {...rest}
               />
 
             <button 
               type="button"
-              className="button-add"
-              onClick={() => handleToInsertNewIngredient()}
+              className="addIngredient"
+              onClick={() => InsertNewIngredient()}
             >
               <FiPlus/>
             </button>

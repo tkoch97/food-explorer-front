@@ -36,6 +36,7 @@ export const Container = styled.div`
         border-radius: .8rem;
 
         > button {
+          display:flex;
           font-size: 1.2rem;
           border: none;
           background: none;
@@ -43,7 +44,7 @@ export const Container = styled.div`
           margin-right: 1.6rem;
           cursor: pointer;
         }
-
+        
         > input {
           height: 3.2rem;
           width: clamp(5.0rem, 8.0rem + 1vw, 9.0rem);
@@ -52,15 +53,48 @@ export const Container = styled.div`
           color: ${({theme}) => theme.COLORS.LIGHT_100};
           background: none;
           border: none;
-
+          
           &:focus {
             outline: none;
           }
-
+          
           &::placeholder {
             color: ${({theme}) => theme.COLORS.LIGHT_500};
           }
         }
+      }
+      
+      .tagIngredient {
+
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+  
+        background: ${({theme}) => theme.COLORS.LIGHT_600};
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+        
+        border: ${({theme}) => `0.1rem dashed ${theme.COLORS.LIGHT_500}`};
+        border-radius: .8rem;
+        
+        > button {
+          display:flex;
+          font-size: 1.2rem;
+          border: none;
+          background: none;
+          color: ${({theme}) => theme.COLORS.LIGHT_100};
+          margin-right: 1.6rem;
+          cursor: pointer;
+        }
+
+        > p {
+          display:flex;
+          align-items:center;
+          font-size: clamp(1.2rem, 1.0rem + 1vw, 1.6rem);
+          padding: .8rem 0rem .8rem 1.6rem;
+          color: ${({theme}) => theme.COLORS.LIGHT_100};
+          height: 3.2rem;
+        }
+
       }
     }
   }
