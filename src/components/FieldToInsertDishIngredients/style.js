@@ -6,7 +6,7 @@ export const Container = styled.div`
   
   ${props => applyFontStyle(props.fontApplied)};
   
-  > label {
+  > .fieldStructure {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -68,7 +68,7 @@ export const Container = styled.div`
 
         display: flex;
         align-items: center;
-        gap: .3rem;
+        gap: .5rem;
   
         background: ${({theme}) => theme.COLORS.LIGHT_600};
         color: ${({theme}) => theme.COLORS.LIGHT_100};
@@ -78,7 +78,7 @@ export const Container = styled.div`
         
         > button {
           display:flex;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           border: none;
           background: none;
           color: ${({theme}) => theme.COLORS.LIGHT_100};

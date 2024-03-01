@@ -1,11 +1,11 @@
 import {Container} from './style';
 import {FiPlus, FiX} from 'react-icons/fi';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export function FieldToInsertDishIngredients(props) {
 
-  const {value, onClick, ...rest} = props;
+  const {...rest} = props;
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -25,12 +25,16 @@ export function FieldToInsertDishIngredients(props) {
       InsertNewIngredient();
     }
   }
+
+  function removeIngredient(ingredientDeleted) {
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== ingredientDeleted));
+  }
   
   
   return(
     <Container fontApplied="ROBOTO_SMALL_REGULAR">
 
-      <label>
+      <div className='fieldStructure'>
         Ingredientes
         <div className="spaceToAgroupIngredientsTags">
 
@@ -40,7 +44,10 @@ export function FieldToInsertDishIngredients(props) {
                   <p className="ingredientName">
                     {ingredient}
                   </p>
-                  <button className="removeIngredient">
+                  <button className="removeIngredient"
+                  type='button'
+                  onClick={() => removeIngredient(ingredient)}
+                  >
                     <FiX/>
                   </button>
                 </div>
@@ -71,7 +78,7 @@ export function FieldToInsertDishIngredients(props) {
           </div>
 
         </div>
-      </label>
+      </div>
 
     </Container>
   )
