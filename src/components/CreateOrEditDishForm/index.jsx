@@ -4,12 +4,11 @@ import { useMediaQuery } from "react-responsive";
 import { Input } from '../Input';
 import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
-// import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
-
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
@@ -18,6 +17,16 @@ export function CreateOrEditDishForm (props) {
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const isVerySmallScreen = useMediaQuery({ maxWidth: 365 });
+
+  const [price, setPrice] = useState('');
+
+  const handleWithChangePrice = useCallback((e) => {
+    let value = e.currentTarget.value;
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d)(\d{2})$/, '$1,$2');
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    setPrice(value)
+  }, [price]);
 
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">
@@ -37,7 +46,8 @@ export function CreateOrEditDishForm (props) {
           </div>
 
           <div className="dishNameInput">
-            <Input labelName='Nome'
+            <Input id='nameDish'
+            labelName='Nome'
             placeholder='Ex.: Salada Ceasar'
             type='text'
             />
@@ -56,10 +66,12 @@ export function CreateOrEditDishForm (props) {
           </div>
 
           <div className="price">
-            <Input className='priceInput'
+            <Input id='priceDish'
               labelName='Preço'
+              mask='money'
+              onChange={handleWithChangePrice}
               placeholder='R$ 00,00'
-              type='number'
+              type='text'
             />
           </div>
 
