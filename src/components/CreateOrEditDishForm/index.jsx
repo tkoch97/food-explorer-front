@@ -9,6 +9,7 @@ import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
+import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
@@ -22,10 +23,7 @@ export function CreateOrEditDishForm (props) {
 
   const handleWithChangePrice = useCallback((e) => {
     let value = e.currentTarget.value;
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d)(\d{2})$/, '$1,$2');
-    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
-    setPrice(value)
+    setPrice(TransformToMoneyPattern(value))
   }, [price]);
 
   return (
