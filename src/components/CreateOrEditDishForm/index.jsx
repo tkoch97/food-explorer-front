@@ -9,6 +9,8 @@ import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
+import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
+// import { createDish } from '../../functions/CreateDish';
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
@@ -19,14 +21,33 @@ export function CreateOrEditDishForm (props) {
   const isVerySmallScreen = useMediaQuery({ maxWidth: 365 });
 
   const [price, setPrice] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('Refeição');
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState('');
 
   const handleWithChangePrice = useCallback((e) => {
     let value = e.currentTarget.value;
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d)(\d{2})$/, '$1,$2');
-    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
-    setPrice(value)
-  }, [price]);
+    setPrice(TransformToMoneyPattern(value))
+  });
+
+  const informationsToCreateANewDish = {
+    imageDish: image,
+    nameDish: name,
+    categoryDish: category,
+    ingredients: ingredients,
+    priceDish: price,
+    descriptionDish: description,
+  }
+
+  const ingredientsAndNewIngredientStates = {
+    ingredients: ingredients,
+    setIngredients: setIngredients,
+    newIngredient: newIngredient,
+    setNewIngredient: setNewIngredient,
+  }
 
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">
@@ -39,9 +60,10 @@ export function CreateOrEditDishForm (props) {
         <div className='basicDetails'>
 
           <div className="uploadImageButton">
-            <UploadImage labelName='Imagem do prato'
+            <UploadImage id='imageDish' labelName='Imagem do prato'
             buttonTitle={type === 'edit' ? 
             (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
+            onChange={(e => setImage(e.target.value))}
             />
           </div>
 
@@ -50,11 +72,16 @@ export function CreateOrEditDishForm (props) {
             labelName='Nome'
             placeholder='Ex.: Salada Ceasar'
             type='text'
+            onChange={e => setName(e.target.value)}
             />
           </div>
 
           <div className="dishTypeSelect">
-            <SelectDishType values={optionsInSelect}/>
+            <SelectDishType 
+              id='categoryDish' 
+              values={optionsInSelect}
+              onChange={(e) => setCategory(e.target.value)}
+            />
           </div>
 
         </div>
@@ -62,7 +89,10 @@ export function CreateOrEditDishForm (props) {
         <div className='ingredientsAndPrice'>
 
           <div className="ingredients">
-            <FieldToInsertDishIngredients/>
+            <FieldToInsertDishIngredients 
+              id='ingredientsDish' 
+              statesToCreateTags={ingredientsAndNewIngredientStates}
+            />
           </div>
 
           <div className="price">
@@ -78,7 +108,11 @@ export function CreateOrEditDishForm (props) {
         </div>
 
         <div className='additionalInformations'>
-          <DishDescriptionArea placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
+          <DishDescriptionArea 
+            id='descriptionDish' 
+            placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'
+            onChange={e => setDescription(e.target.value)}
+          />
         </div>
 
         <div className='actionButtons'>
@@ -86,7 +120,10 @@ export function CreateOrEditDishForm (props) {
             {type === 'edit' ? <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}/> : null}
           </div>
           <div className="saveChangesButton">
-            <Button title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}/>
+            <Button 
+              title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
+              onClick={() => console.log("Dados de informationsToCreateANewDish ->", informationsToCreateANewDish)}
+            />
           </div>
         </div>
 

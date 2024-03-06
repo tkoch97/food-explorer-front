@@ -1,14 +1,16 @@
 import {Container} from './style';
 import {FiPlus, FiX} from 'react-icons/fi';
-// import PropTypes from 'prop-types';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+// import { useState } from 'react';
 
 export function FieldToInsertDishIngredients(props) {
 
-  const {...rest} = props;
+  const {statesToCreateTags, ...rest} = props;
 
-  const [ingredients, setIngredients] = useState([]);
-  const [newIngredient, setNewIngredient] = useState('');
+  const newIngredient = statesToCreateTags.newIngredient;
+  const setNewIngredient = statesToCreateTags.setNewIngredient;
+  const ingredients = statesToCreateTags.ingredients;
+  const setIngredients = statesToCreateTags.setIngredients;
 
   function InsertNewIngredient() {
     if(newIngredient.trim() !== '') {
@@ -36,7 +38,7 @@ export function FieldToInsertDishIngredients(props) {
 
       <div className='fieldStructure'>
         Ingredientes
-        <div className="spaceToAgroupIngredientsTags">
+        <div className="spaceToAgroupIngredientTags">
 
             {
               ingredients.map( (ingredient, index) => (
@@ -82,4 +84,8 @@ export function FieldToInsertDishIngredients(props) {
 
     </Container>
   )
+}
+
+FieldToInsertDishIngredients.propTypes = {
+  statesToCreateTags: PropTypes.object,
 }
