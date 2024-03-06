@@ -14,6 +14,17 @@ export function Menu(props) {
   const {isMenuOpen, closeMenu} = props;
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
 
+  function executeSignOut(e) {
+    e.preventDefault()
+    signOut();
+    navigate("/");
+  }
+
+  function handleWithNewDish(e) {
+    e.preventDefault()
+    navigate('/dish-create/')
+  }
+
 
   return(
     <Container data-menu-is-open = {isMenuOpen}>
@@ -30,11 +41,11 @@ export function Menu(props) {
 
         <Options fontApplied="POPPINS_300_REGULAR">
 
-          {isAdmin && <ButtonText 
-          onClick={(e) => {e.preventDefault(); navigate('/dish-create/');}} 
+          {isAdmin && <ButtonText id='newDishButton'
+          onClick={(e) => {handleWithNewDish(e)}} 
           title="Novo Prato"/>}
 
-          <ButtonText  title="Sair" onClick={() => {signOut()}}/>
+          <ButtonText id='SignOutButton' title="Sair" onClick={(e) => {executeSignOut(e)}}/>
 
         </Options>
       </Main>
