@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 export function SelectDishType(props) {
 
-  const {values} = props;
+  const {values, ... rest} = props;
 
   return(
     <Container fontApplied="ROBOTO_SMALL_REGULAR">
       <label>
         Categoria
-        <select name='category'>
+        <select name='category' {...rest}>
         {values.map((value, index) => (
         <option key={index} value={value}>
           {value}

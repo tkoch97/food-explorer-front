@@ -13,7 +13,7 @@ export const Container = styled.div`
     gap: 0.8rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
     
-    .spaceToAgroupIngredientsTags {
+    .spaceToAgroupIngredientTags {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
