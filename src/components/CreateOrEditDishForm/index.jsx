@@ -23,7 +23,7 @@ export function CreateOrEditDishForm (props) {
   const [price, setPrice] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState();
   const [category, setCategory] = useState('Refeição');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -32,6 +32,10 @@ export function CreateOrEditDishForm (props) {
     let value = e.currentTarget.value;
     setPrice(TransformToMoneyPattern(value))
   });
+
+  const onImageChange = (file) => {
+    setImage(file)
+  }
 
   const informationsToCreateANewDish = {
     imageDish: image,
@@ -61,9 +65,8 @@ export function CreateOrEditDishForm (props) {
 
           <div className="uploadImageButton">
             <UploadImage id='imageDish' labelName='Imagem do prato'
-            buttonTitle={type === 'edit' ? 
-            (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
-            onChange={(e => setImage(e.target.value))}
+            buttonTitle={type === 'edit' ? (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
+            onImageChange={onImageChange}
             />
           </div>
 

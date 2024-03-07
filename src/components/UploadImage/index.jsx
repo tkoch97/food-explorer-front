@@ -3,11 +3,20 @@ import PropTypes from 'prop-types';
 import uploadIcon from '../../assets/uploadIcon.svg';
 
 export function UploadImage(props) {
-  const {labelName, buttonTitle, ...rest} = props
+  const {labelName, buttonTitle, id, onImageChange, ...rest} = props;
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if(file) {
+      onImageChange(file) 
+    }
+  }
+
   return(
     <Container fontApplied="ROBOTO_SMALL_REGULAR">
 
-      <label htmlFor={`input${labelName.replace(/\s+/g, '_')}`}>
+      <label htmlFor={id}>
         {labelName}
 
         <div className="buttonSpace">
@@ -17,7 +26,7 @@ export function UploadImage(props) {
         
       </label>
 
-      <input id={`input${labelName.replace(/\s+/g, '_')}`} type='file'{...rest}/>
+      <input id={id} type='file' accept="image/*" onChange={handleImageChange} {...rest}/>
 
     </Container>
   )
@@ -26,4 +35,6 @@ export function UploadImage(props) {
 UploadImage.propTypes = {
   labelName: PropTypes.string,
   buttonTitle: PropTypes.string,
+  id: PropTypes.string,
+  onImageChange: PropTypes.func,
 };
