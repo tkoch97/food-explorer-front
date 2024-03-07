@@ -24,10 +24,15 @@ export const Container = styled.div`
       width: 100%;
       height: 100%;
 
-      p {
+      #buttonTitle {
         font-size: clamp(1.0rem, 1.0rem + 20%, 1.4rem);
         text-align: start;
       }
+    }
+
+    #selectedImageAlert {
+      color: ${({ theme }) => theme.COLORS.TOMATO_400};
+      font-size: 1.3rem;
     }
   }
 

@@ -4,13 +4,13 @@ import { useMediaQuery } from "react-responsive";
 import { Input } from '../Input';
 import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../Button';
 import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
-// import { createDish } from '../../functions/CreateDish';
+import { createDish } from '../../functions/CreateDish';
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
@@ -23,23 +23,27 @@ export function CreateOrEditDishForm (props) {
   const [price, setPrice] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState();
   const [category, setCategory] = useState('Refeição');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
 
-  const handleWithChangePrice = useCallback((e) => {
+  const handleWithChangePrice = (e) => {
     let value = e.currentTarget.value;
     setPrice(TransformToMoneyPattern(value))
-  });
+  };
+
+  const onImageChange = (file) => {
+    setImage(file)
+  }
 
   const informationsToCreateANewDish = {
-    imageDish: image,
-    nameDish: name,
-    categoryDish: category,
+    image: image,
+    name: name,
+    category: category,
     ingredients: ingredients,
-    priceDish: price,
-    descriptionDish: description,
+    price: price,
+    description: description,
   }
 
   const ingredientsAndNewIngredientStates = {
@@ -61,9 +65,8 @@ export function CreateOrEditDishForm (props) {
 
           <div className="uploadImageButton">
             <UploadImage id='imageDish' labelName='Imagem do prato'
-            buttonTitle={type === 'edit' ? 
-            (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
-            onChange={(e => setImage(e.target.value))}
+            buttonTitle={type === 'edit' ? (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
+            onImageChange={onImageChange}
             />
           </div>
 
@@ -122,7 +125,7 @@ export function CreateOrEditDishForm (props) {
           <div className="saveChangesButton">
             <Button 
               title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
-              onClick={() => console.log("Dados de informationsToCreateANewDish ->", informationsToCreateANewDish)}
+              onClick={() => createDish(informationsToCreateANewDish)}
             />
           </div>
         </div>
