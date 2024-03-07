@@ -7,9 +7,11 @@ export function UploadImage(props) {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    const selectedImageAlert = document.getElementById('selectedImageAlert');
 
     if(file) {
-      onImageChange(file) 
+      onImageChange(file);
+      selectedImageAlert.innerHTML = `Imagem selecionada: ${file.name}`
     }
   }
 
@@ -21,8 +23,10 @@ export function UploadImage(props) {
 
         <div className="buttonSpace">
           <img src={uploadIcon} alt="seta paa cima - ícone de upload" />
-          <p>{buttonTitle}</p>
+          <p id="buttonTitle">{buttonTitle}</p>
         </div>
+
+        <p id="selectedImageAlert"></p>
         
       </label>
 
