@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { api } from "../services/api";
 
-export function createDish(props) {
+export function PostANewDishToDB(props) {
 
   const informationsToSendToApi = props;
 
@@ -15,7 +15,7 @@ export function createDish(props) {
   verifyData(informationsToSendToApi);
 }
 
-createDish.PropTypes = {
+PostANewDishToDB.PropTypes = {
   data: PropTypes.object,
 } 
 
