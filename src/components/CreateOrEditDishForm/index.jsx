@@ -10,7 +10,7 @@ import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
-import { createDish } from '../../functions/CreateDish';
+import { PostANewDishToDB } from '../../functions/PostANewDishToDB';
 export function CreateOrEditDishForm (props) {
 
   const {type} = props;
@@ -27,14 +27,43 @@ export function CreateOrEditDishForm (props) {
   const [category, setCategory] = useState('Refeição');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
+  const [alertMessageAboutImage, setAlertMessageAboutImage] = useState('');
 
+  const nameDish = document.getElementById('nameDish');
+  const ingredientsDish = document.getElementById('ingredientsDish');
+  const priceDish = document.getElementById('priceDish');
+  const descriptionDish = document.getElementById('descriptionDish');
+  
   const handleWithChangePrice = (e) => {
     let value = e.currentTarget.value;
     setPrice(TransformToMoneyPattern(value))
   };
+  
+  const SendInformationsToPostANewDish = (informationsToCreateANewDish) => {
+    const {image, name, ingredients, price, description} = informationsToCreateANewDish
+
+    if(!image) {
+      setAlertMessageAboutImage('Selecione uma imagem para o prato')
+    } else if(name === '') {
+      nameDish.focus()
+      alert('Insira um nome para o prato');
+    } else if (ingredients.length === 0) {
+      alert('Informe os ingredientes do prato');
+      ingredientsDish.focus()
+    } else if (price === '') {
+      alert('Informe o preço do prato');
+      priceDish.focus()
+    } else if (description === '') {
+      alert('Escreva uma drescrição para o prato');
+      descriptionDish.focus()
+    } else {
+      PostANewDishToDB(informationsToCreateANewDish)
+    }
+  }
 
   const onImageChange = (file) => {
     setImage(file)
+    setAlertMessageAboutImage('')
   }
 
   const informationsToCreateANewDish = {
@@ -53,6 +82,8 @@ export function CreateOrEditDishForm (props) {
     setNewIngredient: setNewIngredient,
   }
 
+  
+
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">
       <p >
@@ -68,6 +99,7 @@ export function CreateOrEditDishForm (props) {
             buttonTitle={type === 'edit' ? (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
             onImageChange={onImageChange}
             />
+            <p id='alertUserToSelectAnImage'>{alertMessageAboutImage}</p>
           </div>
 
           <div className="dishNameInput">
@@ -125,7 +157,7 @@ export function CreateOrEditDishForm (props) {
           <div className="saveChangesButton">
             <Button 
               title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
-              onClick={() => createDish(informationsToCreateANewDish)}
+              onClick={() => {type === 'edit' ? '' : SendInformationsToPostANewDish(informationsToCreateANewDish)}}
             />
           </div>
         </div>

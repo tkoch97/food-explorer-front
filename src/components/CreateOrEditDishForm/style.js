@@ -49,6 +49,11 @@ export const Form = styled.form`
       }
 
     }
+
+    #alertUserToSelectAnImage {
+      color: ${({ theme }) => theme.COLORS.TOMATO_400};
+      font-size: 1.3rem;
+    }
   }
 
   .ingredientsAndPrice {
