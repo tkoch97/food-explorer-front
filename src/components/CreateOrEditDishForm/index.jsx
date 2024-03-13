@@ -23,7 +23,7 @@ export function CreateOrEditDishForm (props) {
   const [price, setPrice] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const [category, setCategory] = useState('Refeição');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -33,11 +33,24 @@ export function CreateOrEditDishForm (props) {
   const ingredientsDish = document.getElementById('ingredientsDish');
   const priceDish = document.getElementById('priceDish');
   const descriptionDish = document.getElementById('descriptionDish');
+  const imageDish = document.getElementById('imageDish');
   
   const handleWithChangePrice = (e) => {
     let value = e.currentTarget.value;
     setPrice(TransformToMoneyPattern(value))
   };
+
+  function resetDishInformations() {
+    imageDish.value = [];
+    setImage(null);
+    descriptionDish.value = '';
+    setDescription('');
+    setIngredients([]);
+    nameDish.value = '';
+    setName('');
+    priceDish.value = '';
+    setPrice('');
+  }
   
   const SendInformationsToPostANewDish = (informationsToCreateANewDish) => {
     const {image, name, ingredients, price, description} = informationsToCreateANewDish
@@ -57,7 +70,8 @@ export function CreateOrEditDishForm (props) {
       alert('Escreva uma drescrição para o prato');
       descriptionDish.focus()
     } else {
-      PostANewDishToDB(informationsToCreateANewDish)
+      PostANewDishToDB(informationsToCreateANewDish);
+      resetDishInformations();
     }
   }
 
@@ -69,7 +83,7 @@ export function CreateOrEditDishForm (props) {
   const informationsToCreateANewDish = {
     image: image,
     name: name,
-    category: category,
+    category: category.toLowerCase(),
     ingredients: ingredients,
     price: price,
     description: description,
