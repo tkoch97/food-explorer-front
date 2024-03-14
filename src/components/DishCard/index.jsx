@@ -34,7 +34,7 @@ export function DishCard(props) {
     <Container>
 
       <FavoriteOrEditButton>
-        {isAdmin ? <PiPencilSimple/> : <FaRegHeart />}
+        {isAdmin ? <PiPencilSimple onClick={() => navigate(`/dish-edit/${data.id}`)}/> : <FaRegHeart />}
       </FavoriteOrEditButton>
 
       <DishImg onClick={() => navigate(`/dish-details/${data.id}`)}>
