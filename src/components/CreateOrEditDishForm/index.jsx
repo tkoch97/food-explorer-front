@@ -41,8 +41,11 @@ export function CreateOrEditDishForm (props) {
   };
 
   function resetDishInformations() {
-    imageDish.value = [];
+    const selectedImageMsg = document.getElementById('selectedImageMsg')
+
+    imageDish.value = '';
     setImage(null);
+    selectedImageMsg.innerHTML = '';
     descriptionDish.value = '';
     setDescription('');
     setIngredients([]);
@@ -57,6 +60,7 @@ export function CreateOrEditDishForm (props) {
 
     if(!image) {
       setAlertMessageAboutImage('Selecione uma imagem para o prato')
+      alert('Selecione uma imagem para o prato.')
     } else if(name === '') {
       nameDish.focus()
       alert('Insira um nome para o prato');
@@ -95,8 +99,6 @@ export function CreateOrEditDishForm (props) {
     newIngredient: newIngredient,
     setNewIngredient: setNewIngredient,
   }
-
-  
 
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">

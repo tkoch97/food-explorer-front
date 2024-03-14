@@ -30,7 +30,7 @@ export const Container = styled.div`
       }
     }
 
-    #selectedImageAlert {
+    #selectedImageMsg{
       color: ${({ theme }) => theme.COLORS.MINT_100};
       font-size: 1.3rem;
     }
