@@ -5,7 +5,6 @@ import { USER_ROLE } from "../utils/roles";
 import { AuthRoutes } from "./auth.routes";
 import { AdminRoutes } from "./admin.routes";
 import { ClientRoutes } from "./client.routes";
-import { ScrollToTop } from "../functions/scrollToTop";
 
 export function Routes() {
 
@@ -25,7 +24,6 @@ export function Routes() {
   
   return(
     <BrowserRouter>
-      <ScrollToTop/>
       {user ? <AccessRoute/> : <AuthRoutes/>}
     </BrowserRouter>
   )

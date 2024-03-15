@@ -13,7 +13,7 @@ import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 import { PostANewDishToDB } from '../../functions/PostANewDishToDB';
 export function CreateOrEditDishForm (props) {
 
-  const {type} = props;
+  const {type, currentDish} = props;
 
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
 
@@ -24,8 +24,8 @@ export function CreateOrEditDishForm (props) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState('Refeição');
-  const [ingredients, setIngredients] = useState([]);
+  const [category, setCategory] = useState(type === 'create' ? 'Refeição' : '');
+  const [ingredients, setIngredients] = useState(type === 'create' ? [] : []);
   const [newIngredient, setNewIngredient] = useState('');
   const [alertMessageAboutImage, setAlertMessageAboutImage] = useState('');
 
@@ -121,7 +121,7 @@ export function CreateOrEditDishForm (props) {
           <div className="dishNameInput">
             <Input id='nameDish'
             labelName='Nome'
-            placeholder='Ex.: Salada Ceasar'
+            placeholder={type === 'create' ? 'Ex.: Salada Ceasar' : ''}
             type='text'
             onChange={e => setName(e.target.value)}
             />
@@ -173,7 +173,7 @@ export function CreateOrEditDishForm (props) {
           <div className="saveChangesButton">
             <Button 
               title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
-              onClick={() => {type === 'edit' ? '' : SendInformationsToPostANewDish(informationsToCreateANewDish)}}
+              onClick={() => {type === 'edit' ? console.log("valor de dishData =>", currentDish) : SendInformationsToPostANewDish(informationsToCreateANewDish)}}
             />
           </div>
         </div>
@@ -185,5 +185,5 @@ export function CreateOrEditDishForm (props) {
 
 CreateOrEditDishForm.propTypes = {
   type: PropTypes.string,
-  data: PropTypes.object,
+  currentDish: PropTypes.object,
 }
