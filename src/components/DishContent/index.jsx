@@ -9,10 +9,12 @@ import PropTypes from 'prop-types';
 import { IngredientTag } from '../IngredientTag/index.jsx';
 import { Accountant } from '../Accountant/index.jsx';
 import { Button } from '../Button/index.jsx';
+import { useNavigate } from "react-router-dom";
 
 export function DishContent(props) {
   const {user} = useAuth();
   const {data} = props;
+  const navigate = useNavigate();
 
   const dishImage = `
   ${api.defaults.baseURL}/files/${data.dish.image}`;
@@ -52,7 +54,7 @@ export function DishContent(props) {
             {isAdmin ? null : <Accountant/>}
             <div className='includeButtonSpace'>
               {isAdmin ? 
-                <Button title={"Editar prato"}/> :
+                <Button title={"Editar prato"} onClick={() => navigate(`/dish-edit/${data.dish.id}`)}/> :
                 <Button 
                 title={ isDesktop ? desktopTitleOfIncludeButton : mobileTitleOfIncludeButton}
                 icon={isDesktop ? null : PiReceipt }

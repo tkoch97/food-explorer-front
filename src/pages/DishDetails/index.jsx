@@ -22,7 +22,7 @@ export function DishDetails() {
     }
 
     fetchDish();
-  }, []);
+  });
 
   return (
     <Container className='page'>
