@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Container, Form } from './style';
 import { useMediaQuery } from "react-responsive";
 import { Input } from '../Input';
@@ -6,26 +5,22 @@ import { SelectDishType } from '../SelectDishType';
 import { DishDescriptionArea } from '../DishDescriptionArea';
 import { useState } from 'react';
 import { Button } from '../Button';
-import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 import { PostANewDishToDB } from '../../functions/PostANewDishToDB';
-export function CreateOrEditDishForm (props) {
-
-  const {type, currentDish} = props;
+export function CreateDishForm () {
 
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
-  const isVerySmallScreen = useMediaQuery({ maxWidth: 365 });
 
   const [price, setPrice] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState(type === 'create' ? 'Refeição' : '');
-  const [ingredients, setIngredients] = useState(type === 'create' ? [] : []);
+  const [category, setCategory] = useState('Refeição');
+  const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [alertMessageAboutImage, setAlertMessageAboutImage] = useState('');
 
@@ -43,7 +38,7 @@ export function CreateOrEditDishForm (props) {
   function resetDishInformations() {
     const selectedImageMsg = document.getElementById('selectedImageMsg')
 
-    imageDish.value = '';
+    imageDish.value = ''; 
     setImage(null);
     selectedImageMsg.innerHTML = '';
     descriptionDish.value = '';
@@ -103,7 +98,7 @@ export function CreateOrEditDishForm (props) {
   return (
     <Container fontApplied= "POPPINS_400_MEDIUM">
       <p >
-        {type === "create" ? (isDesktop ? 'Adicionar prato' : 'Novo prato') : 'Editar prato'}
+        {isDesktop ? 'Adicionar prato' : 'Novo prato'}
       </p>
 
       <Form>
@@ -112,7 +107,7 @@ export function CreateOrEditDishForm (props) {
 
           <div className="uploadImageButton">
             <UploadImage id='imageDish' labelName='Imagem do prato'
-            buttonTitle={type === 'edit' ? (isDesktop ? 'Selecione Imagem' : 'Selecione Imagem para alterá-la') : 'Selecione Imagem'}
+            buttonTitle='Selecione Imagem'
             onImageChange={onImageChange}
             />
             <p id='alertUserToSelectAnImage'>{alertMessageAboutImage}</p>
@@ -121,7 +116,7 @@ export function CreateOrEditDishForm (props) {
           <div className="dishNameInput">
             <Input id='nameDish'
             labelName='Nome'
-            placeholder={type === 'create' ? 'Ex.: Salada Ceasar' : ''}
+            placeholder='Ex.: Salada Ceasar'
             type='text'
             onChange={e => setName(e.target.value)}
             />
@@ -166,14 +161,11 @@ export function CreateOrEditDishForm (props) {
           />
         </div>
 
-        <div className='actionButtons'>
-          <div className="deleteDishButton">
-            {type === 'edit' ? <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}/> : null}
-          </div>
-          <div className="saveChangesButton">
+        <div className='actionButton'>
+          <div className="saveButton">
             <Button 
-              title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
-              onClick={() => {type === 'edit' ? console.log("valor de dishData =>", currentDish) : SendInformationsToPostANewDish(informationsToCreateANewDish)}}
+              title='Salvar prato'
+              onClick={() => {SendInformationsToPostANewDish(informationsToCreateANewDish)}}
             />
           </div>
         </div>
@@ -181,9 +173,4 @@ export function CreateOrEditDishForm (props) {
       </Form>
     </Container>
   )
-}
-
-CreateOrEditDishForm.propTypes = {
-  type: PropTypes.string,
-  currentDish: PropTypes.object,
 }
