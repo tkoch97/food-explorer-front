@@ -83,7 +83,7 @@ export const Form = styled.form`
   
   }
 
-  .actionButtons {
+  .actionButton {
     max-width: 37.0rem;
     min-width: 36.0rem;
     display: flex;
@@ -94,17 +94,13 @@ export const Form = styled.form`
     @media (max-width: 460px) {
       min-width: 100%;
     }
-
-    @media (max-width: 386px) {
-      gap: 1.0rem;
-    }
-
-    .deleteDishButton {
-      width: 40%;
-    }
-
-    .saveChangesButton {
+    
+    .saveButton {
       width: 60%;
+      
+      @media (max-width: 460px) {
+        width: 100%;
+      }
     }
   }
 
