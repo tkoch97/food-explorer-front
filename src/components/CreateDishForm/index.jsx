@@ -19,7 +19,7 @@ export function CreateDishForm () {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState('Refeição');
+  const [category, setCategory] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [alertMessageAboutImage, setAlertMessageAboutImage] = useState('');
@@ -29,6 +29,7 @@ export function CreateDishForm () {
   const priceDish = document.getElementById('priceDish');
   const descriptionDish = document.getElementById('descriptionDish');
   const imageDish = document.getElementById('imageDish');
+  const categoryDish = document.getElementById('categoryDish');
   
   const handleWithChangePrice = (e) => {
     let value = e.currentTarget.value;
@@ -51,7 +52,7 @@ export function CreateDishForm () {
   }
   
   const SendInformationsToPostANewDish = (informationsToCreateANewDish) => {
-    const {image, name, ingredients, price, description} = informationsToCreateANewDish
+    const {image, name, ingredients, price, description, category} = informationsToCreateANewDish
 
     if(!image) {
       setAlertMessageAboutImage('Selecione uma imagem para o prato')
@@ -68,6 +69,9 @@ export function CreateDishForm () {
     } else if (description === '') {
       alert('Escreva uma drescrição para o prato');
       descriptionDish.focus()
+    } else if(category === '') {
+      alert('Selecione uma categoria para o prato.');
+      categoryDish.focus()
     } else {
       PostANewDishToDB(informationsToCreateANewDish);
       resetDishInformations();
@@ -126,8 +130,9 @@ export function CreateDishForm () {
             <SelectDishType 
               id='categoryDish' 
               values={optionsInSelect}
+              placeholder='Selecionar'
               onChange={(e) => setCategory(e.target.value)}
-            />
+              /> 
           </div>
 
         </div>
