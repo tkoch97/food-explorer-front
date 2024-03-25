@@ -29,11 +29,17 @@ export function EditDishForm () {
   }, [params.id]);
   
   useEffect(() => {
-    if(dishData) {
-      setIngredients(dishData.ingredients.map(ingredient => ingredient.name));
-      setAlertAboutCurrentImage(`Imagem atual: 
-      ${dishData.dish.image.substring(dishData.dish.image.indexOf('-') + 1)}`);
+
+    function insertCategoryIngredientsAndNameOfImageOfDishInStates() {
+      if(dishData) {
+        setAlertAboutCurrentImage(`Imagem atual: 
+        ${dishData.dish.image.substring(dishData.dish.image.indexOf('-') + 1)}`);
+        setCategory(dishData.dish.category);
+        setIngredients(dishData.ingredients.map(ingredient => ingredient.name));
+      }
     }
+
+    insertCategoryIngredientsAndNameOfImageOfDishInStates();
   }, [dishData])
   
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
@@ -45,7 +51,7 @@ export function EditDishForm () {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState('Refeição');
+  const [category, setCategory] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [alertAboutCurrentImage, setAlertAboutCurrentImage] = useState('');
@@ -61,7 +67,6 @@ export function EditDishForm () {
     setPrice(TransformToMoneyPattern(value))
   };
   
-  
   const onImageChange = (file) => {
     setImage(file)
   }
@@ -72,11 +77,20 @@ export function EditDishForm () {
     newIngredient: newIngredient,
     setNewIngredient: setNewIngredient,
   }
+
+  const informationsToSendForEditDish = {
+    image: image,
+    name: name,
+    category: category.toLowerCase(),
+    ingredients: ingredients,
+    price: price,
+    description: description,
+  }
   
   if (dishData) {
     
     console.log('valor de DishData =>', dishData)
-    console.log('valor de ingredients =>', ingredients)
+    console.log('valor de price =>', price)
 
     return (
       <Container fontApplied= "POPPINS_400_MEDIUM">
@@ -107,7 +121,8 @@ export function EditDishForm () {
   
             <div className="dishTypeSelect">
               <SelectDishType 
-                id='categoryDish' 
+                id='categoryDish'
+                placeholder={category.charAt(0).toUpperCase() + category.slice(1)}
                 values={optionsInSelect}
                 onChange={(e) => setCategory(e.target.value)}
               />
