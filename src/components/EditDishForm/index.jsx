@@ -30,17 +30,16 @@ export function EditDishForm () {
   
   useEffect(() => {
 
-    function fillAllFormFieldsWithDishInformations() {
+    function insertCategoryIngredientsAndNameOfImageOfDishInStates() {
       if(dishData) {
-        setIngredients(dishData.ingredients.map(ingredient => ingredient.name));
         setAlertAboutCurrentImage(`Imagem atual: 
         ${dishData.dish.image.substring(dishData.dish.image.indexOf('-') + 1)}`);
         setCategory(dishData.dish.category);
-        
+        setIngredients(dishData.ingredients.map(ingredient => ingredient.name));
       }
     }
 
-    fillAllFormFieldsWithDishInformations();
+    insertCategoryIngredientsAndNameOfImageOfDishInStates();
   }, [dishData])
   
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
@@ -68,7 +67,6 @@ export function EditDishForm () {
     setPrice(TransformToMoneyPattern(value))
   };
   
-  
   const onImageChange = (file) => {
     setImage(file)
   }
@@ -79,11 +77,20 @@ export function EditDishForm () {
     newIngredient: newIngredient,
     setNewIngredient: setNewIngredient,
   }
+
+  const informationsToSendForEditDish = {
+    image: image,
+    name: name,
+    category: category.toLowerCase(),
+    ingredients: ingredients,
+    price: price,
+    description: description,
+  }
   
   if (dishData) {
     
     console.log('valor de DishData =>', dishData)
-    console.log('valor de category =>', category)
+    console.log('valor de price =>', price)
 
     return (
       <Container fontApplied= "POPPINS_400_MEDIUM">
