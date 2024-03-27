@@ -84,8 +84,25 @@ export function EditDishForm () {
     dishId: params.id
   }
 
+  const handleWithDeleteDish = () => {
+    const confirmDelete = window.confirm("Tem certeza de que deseja excluir este prato? Esta ação não pode ser desfeita.");
+
+    if (confirmDelete) {
+        DeleteDishFromDB(informationsToEditDish, navigate);
+    } else {
+        alert("Exclusão cancelada pelo usuário.");
+    }
+  }
+
   const sendInformationsToEditDish = () => {
-    UpdateADishInDB(informationsToEditDish, navigate);
+
+    const confirmEdition = window.confirm("Tem certeza de que deseja aplicar as alterações?");
+
+    if (confirmEdition) {
+        UpdateADishInDB(informationsToEditDish, navigate);
+    } else {
+        alert("Alteações não aplicadas");
+    }
   }
   
   if (dishData) {
@@ -162,7 +179,7 @@ export function EditDishForm () {
           <div className='actionButtons'>
             <div className="deleteDishButton">
               <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}
-              onClick={() => {DeleteDishFromDB(informationsToEditDish, navigate)}}
+              onClick={() => {handleWithDeleteDish()}}
               />
             </div>
             <div className="saveChangesButton">
