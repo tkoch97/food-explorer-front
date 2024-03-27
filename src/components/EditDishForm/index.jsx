@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container, Form } from './style';
 import { useMediaQuery } from "react-responsive";
@@ -12,12 +11,14 @@ import { DeleteDishButton } from '../DeleteDishButton';
 import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
+import { UpdateADishInDB } from '../../functions/UpdateADishInDB';
 
 export function EditDishForm () {
 
   const params = useParams();
 
   const [dishData, setDishData] = useState();
+  const navigate = useNavigate();
 
   useEffect( () =>  {
     async function fetchDish() {
@@ -56,12 +57,6 @@ export function EditDishForm () {
   const [newIngredient, setNewIngredient] = useState('');
   const [alertAboutCurrentImage, setAlertAboutCurrentImage] = useState('');
   
-  const nameDish = document.getElementById('nameDish');
-  const ingredientsDish = document.getElementById('ingredientsDish');
-  const priceDish = document.getElementById('priceDish');
-  const descriptionDish = document.getElementById('descriptionDish');
-  const imageDish = document.getElementById('imageDish');
-  
   const handleWithChangePrice = (e) => {
     let value = e.currentTarget.value;
     setPrice(TransformToMoneyPattern(value))
@@ -78,19 +73,23 @@ export function EditDishForm () {
     setNewIngredient: setNewIngredient,
   }
 
-  const informationsToSendForEditDish = {
+  const informationsToEditDish = {
     image: image,
     name: name,
-    category: category.toLowerCase(),
+    category: category,
     ingredients: ingredients,
     price: price,
     description: description,
+    dishId: params.id
+  }
+
+  const sendInformationsToEditDish = () => {
+    UpdateADishInDB(informationsToEditDish, navigate);
   }
   
   if (dishData) {
     
-    console.log('valor de DishData =>', dishData)
-    console.log('valor de price =>', price)
+    console.log('valor de informationsToEditDish =>', informationsToEditDish)
 
     return (
       <Container fontApplied= "POPPINS_400_MEDIUM">
@@ -166,7 +165,7 @@ export function EditDishForm () {
             <div className="saveChangesButton">
               <Button 
                 title={isVerySmallScreen ? 'Salvar' : 'Salvar alterações'}
-                onClick={() => {}}
+                onClick={() => {sendInformationsToEditDish()}}
               />
             </div>
           </div>
