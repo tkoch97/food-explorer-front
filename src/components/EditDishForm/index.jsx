@@ -12,6 +12,7 @@ import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 import { UpdateADishInDB } from '../../functions/UpdateADishInDB';
+import { DeleteDishFromDB } from "../../functions/DeleteDishFromDB";
 
 export function EditDishForm () {
 
@@ -160,7 +161,9 @@ export function EditDishForm () {
   
           <div className='actionButtons'>
             <div className="deleteDishButton">
-              <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}/>
+              <DeleteDishButton title={isVerySmallScreen ? 'Excluir' : 'Excluir Prato'}
+              onClick={() => {DeleteDishFromDB(informationsToEditDish, navigate)}}
+              />
             </div>
             <div className="saveChangesButton">
               <Button 

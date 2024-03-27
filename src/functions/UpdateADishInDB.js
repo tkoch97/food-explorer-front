@@ -1,9 +1,6 @@
-import PropTypes from 'prop-types';
 import { api } from "../services/api";
 
 export function UpdateADishInDB(informationsToEditDish, navigate) {
-
-  // const informationsToEditDish = props;
   const formData = new FormData();
 
   const dishTextInformations = {
@@ -24,7 +21,6 @@ export function UpdateADishInDB(informationsToEditDish, navigate) {
   
   async function EditDish() {
     try{
-      console.log("valor de formData =>", formData);
       await api.put(`/dish/${informationsToEditDish.dishId}`, formData, {withCredentials:true});
       alert('Prato editado com sucesso');
       navigate('/')
@@ -38,8 +34,4 @@ export function UpdateADishInDB(informationsToEditDish, navigate) {
   }
   
   EditDish();
-}
-
-UpdateADishInDB.PropTypes = {
-  data: PropTypes.object,
 }
