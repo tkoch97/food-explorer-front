@@ -40,26 +40,35 @@ export function Home() {
           </div>
         </div>
 
-        <SectionInHome title='Refeições'>
-          {
-            dishes.map(dish => (
-             <DishCard 
-              key={String(dish.id)}
-              data={dish}
-             /> 
-            ))
-          }
-        </SectionInHome>
+        {dishes.some(dish => dish.category.toLowerCase() === 'refeição') && (
+          <SectionInHome title='Refeições'>
+            {
+              dishes.filter(dish => dish.category.toLowerCase() === 'refeição').map(
+                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
+              )
+            }
+          </SectionInHome>
+        )}
 
-        {/* <SectionInHome title='Bebidas'>
+        {dishes.some(dish => dish.category.toLowerCase() === 'sobremesa') && (
+          <SectionInHome title='Sobremesas'>
+            {
+              dishes.filter(dish => dish.category.toLowerCase() === 'sobremesa').map(
+                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/>
+              )
+            }
+          </SectionInHome>
+          )}
 
-        </SectionInHome>
-
-        <SectionInHome title='Sobremesas'>
-
-        </SectionInHome> */}
-
-        
+        {dishes.some(dish => dish.category.toLowerCase() === 'bebida') && (
+          <SectionInHome title='Bebidas'>
+            {
+              dishes.filter(dish => dish.category.toLowerCase() === 'bebida').map(
+                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
+              )
+            }
+          </SectionInHome>
+        )}
 
       </div>
 
