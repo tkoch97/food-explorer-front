@@ -5,7 +5,7 @@ import { SectionInHome } from '../../components/SectionInHome';
 import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
 import { useEffect, useState } from 'react';
-import { api } from '../../services/api.js';
+import { GetDishes } from '../../functions/GetDishes.js';
 
 export function Home() {
 
@@ -13,12 +13,7 @@ export function Home() {
   const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
-    async function fetchDishes() {
-      const response = await api.get(`/dish`, {withCredentials:true});
-      setDishes(response.data)
-    }
-
-    fetchDishes();
+    GetDishes(setDishes);
   }, []);
 
   return (
@@ -40,35 +35,37 @@ export function Home() {
           </div>
         </div>
 
-        {dishes.some(dish => dish.category.toLowerCase() === 'refeição') && (
-          <SectionInHome title='Refeições'>
-            {
-              dishes.filter(dish => dish.category.toLowerCase() === 'refeição').map(
-                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
-              )
-            }
-          </SectionInHome>
-        )}
-
-        {dishes.some(dish => dish.category.toLowerCase() === 'sobremesa') && (
-          <SectionInHome title='Sobremesas'>
-            {
-              dishes.filter(dish => dish.category.toLowerCase() === 'sobremesa').map(
-                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/>
-              )
-            }
-          </SectionInHome>
+        <div id="listDishes">
+          {dishes.some(dish => dish.category.toLowerCase() === 'refeição') && (
+            <SectionInHome title='Refeições'>
+              {
+                dishes.filter(dish => dish.category.toLowerCase() === 'refeição').map(
+                  filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
+                )
+              }
+            </SectionInHome>
           )}
 
-        {dishes.some(dish => dish.category.toLowerCase() === 'bebida') && (
-          <SectionInHome title='Bebidas'>
-            {
-              dishes.filter(dish => dish.category.toLowerCase() === 'bebida').map(
-                filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
-              )
-            }
-          </SectionInHome>
-        )}
+          {dishes.some(dish => dish.category.toLowerCase() === 'sobremesa') && (
+            <SectionInHome title='Sobremesas'>
+              {
+                dishes.filter(dish => dish.category.toLowerCase() === 'sobremesa').map(
+                  filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/>
+                )
+              }
+            </SectionInHome>
+          )}
+
+          {dishes.some(dish => dish.category.toLowerCase() === 'bebida') && (
+            <SectionInHome title='Bebidas'>
+              {
+                dishes.filter(dish => dish.category.toLowerCase() === 'bebida').map(
+                  filteredDish => <DishCard key={String(filteredDish.id)} data={filteredDish}/> 
+                )
+              }
+            </SectionInHome>
+          )}
+        </div>
 
       </div>
 
