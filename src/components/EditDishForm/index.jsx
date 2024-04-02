@@ -106,8 +106,6 @@ export function EditDishForm () {
   }
   
   if (dishData) {
-    
-    console.log('valor de informationsToEditDish =>', informationsToEditDish)
 
     return (
       <Container fontApplied= "POPPINS_400_MEDIUM">

@@ -6,12 +6,14 @@ import { ButtonText } from '../../components/ButtonText';
 import { SectionSignInAndSignUp } from '../../components/SectionSignInAndSignUp';
 import brandNormalMobileAndDesktop from '../../assets/brand-normal-mobile-and-desktop.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate();
 
   const {SignIn} = useAuth();
 
@@ -20,6 +22,7 @@ export function SignIn() {
     try{
       await SignIn({email, password});
       setIsLoading(false);
+      navigate('/home')
     } catch (error){
       setIsLoading(false)
     }

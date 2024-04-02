@@ -64,7 +64,7 @@ export function SignUp() {
 
         <Button title='Criar conta' loading={isLoading} onClick={handleExecuteSignUp}/>
         
-        <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/'/>
+        <ButtonText alignContent="center" fontApplied="POPPINS_100_MEDIUM" title="Já tenho uma conta" to='/signIn'/>
       </Form>
 
 

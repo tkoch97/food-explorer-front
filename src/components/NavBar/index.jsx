@@ -11,9 +11,12 @@ import { Button } from '../Button';
 import { useAuth } from "../../hooks/authContext";
 import {USER_ROLE} from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 export function NavBar(props) {
   const {user, signOut } = useAuth();
+  const [wordToFindDish, setWordToFindDish] = useState('');
 
   const {openMenu} = props;
   const isAdmin = [USER_ROLE.ADMIN].includes(user.role);
@@ -27,19 +30,31 @@ export function NavBar(props) {
     navigate("/");
   }
 
+  async function searchDishByEnterButton(e) {
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      navigate(`/dish-search?nameOrIngredient=${wordToFindDish}`);
+    }
+  }
+
   return (
     <Container isDesktop={isDesktop}>
       <OpenMenuButtonSpace>
         <FiMenu onClick={openMenu}/>
       </OpenMenuButtonSpace>
 
-      <Brand className='brandLogo' onClick={() => navigate('/')}>
+      <Brand className='brandLogo' onClick={() => navigate('/home')}>
         <img src={logo}  alt="Logo Food Explorer"/>
       </Brand>
 
         {isDesktop && (
         <div className='searchBarrSpace'>
-          <SearchBarr placeholder='Busque por pratos ou ingredientes'/>
+          <SearchBarr 
+          id='searchDishOnNavBar' 
+          placeholder='Busque por pratos ou ingredientes'
+          onChange ={e => setWordToFindDish(e.target.value)}
+          onKeyDown={searchDishByEnterButton}
+          />
         </div>
         )}
 
@@ -47,7 +62,7 @@ export function NavBar(props) {
           {isDesktop && 
           <Button 
           title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }
-          onClick={isAdmin ? () => navigate('/dish-create/') : () => navigate('/')}
+          onClick={isAdmin ? () => navigate('/dish-create/') : () => navigate('/home')}
           />}
           {!isDesktop && !isAdmin && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
         </div>

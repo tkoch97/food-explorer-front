@@ -15,7 +15,7 @@ export function executeSignUp(name, email, password, navigate) {
   api.post("/user", {name, email, password})
   .then(() => {
     alert("Usuário cadastrado com sucesso, faça seu login")
-    navigate('/')
+    navigate('/signIn')
   })
   .catch(error => { 
     if(error.response) {

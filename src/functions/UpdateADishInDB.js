@@ -10,9 +10,6 @@ export function UpdateADishInDB(informationsToEditDish, navigate) {
     ingredients: informationsToEditDish.ingredients,
     price: informationsToEditDish.price
   }
-
-  console.log("valor de informationsToEditDish =>", informationsToEditDish);
-  console.log("valor de dishTextInformations =>", dishTextInformations);
   
   formData.append("text", JSON.stringify(dishTextInformations))
   if(informationsToEditDish.image) {

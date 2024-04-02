@@ -5,22 +5,33 @@ import { SectionInHome } from '../../components/SectionInHome';
 import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
 import { useEffect, useState } from 'react';
-import { GetDishes } from '../../functions/GetDishes.js';
+import { GetFilterDishes } from '../../functions/GetFilterDishes.js';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export function Home() {
+export function SearchDishes() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dishes, setDishes] = useState([]);
 
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const nameOrIngredient = query.get('nameOrIngredient');
+  const navigate = useNavigate();
+
+  const propsToGetFilterDishes = {
+    nameOrIngredient,
+    setDishes,
+    navigate
+  }
+
   useEffect(() => {
-    GetDishes(setDishes);
-  }, []);
+    GetFilterDishes(propsToGetFilterDishes)
+  }, [nameOrIngredient]);
 
   return (
     <Container className='page'>
         <NavBar 
         openMenu = {() => setIsMenuOpen(true)}
-        setDishes = {setDishes}
         />
 
         <Menu 
@@ -77,4 +88,5 @@ export function Home() {
       </div>
     </Container>
   )
+
 }
