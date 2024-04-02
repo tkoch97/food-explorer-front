@@ -1,9 +1,6 @@
 import { api } from "../services/api";
 
 export function DeleteDishFromDB(informationsToEditDish, navigate) {
-
-  
-  console.log("valor de informationsToEditDish =>", informationsToEditDish);
   
   async function DeleteDish() {
     try{

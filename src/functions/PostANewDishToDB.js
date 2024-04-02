@@ -35,8 +35,4 @@ export function PostANewDishToDB(props) {
 
 PostANewDishToDB.PropTypes = {
   data: PropTypes.object,
-} 
-
-
-// console.log("inforamções para enviar ao BD =>", informationsToSendToApi);
-// alert('Prato adicionado com sucesso');
+}
