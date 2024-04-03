@@ -8,7 +8,7 @@ import { SearchDishes } from "../pages/Search";
 export function AdminRoutes() {
   return(
     <Routes>
-      <Route path="/home" element={<Home/>}/>
+      <Route path="/" element={<Home/>}/>
       <Route path="/dish-details/:id" element={<DishDetails/>}/>
       <Route path="/dish-create/" element={<CreateDish/>}/>
       <Route path="/dish-edit/:id" element={<EditDish/>}/>

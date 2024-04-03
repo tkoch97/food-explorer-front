@@ -43,7 +43,7 @@ export function NavBar(props) {
         <FiMenu onClick={openMenu}/>
       </OpenMenuButtonSpace>
 
-      <Brand className='brandLogo' onClick={() => navigate('/home')}>
+      <Brand className='brandLogo' onClick={() => navigate('/')}>
         <img src={logo}  alt="Logo Food Explorer"/>
       </Brand>
 
@@ -62,7 +62,7 @@ export function NavBar(props) {
           {isDesktop && 
           <Button 
           title={isAdmin ? 'Novo Prato' : 'Pedidos (0)'} icon={isAdmin ? null : PiReceipt }
-          onClick={isAdmin ? () => navigate('/dish-create/') : () => navigate('/home')}
+          onClick={isAdmin ? () => navigate('/dish-create/') : () => navigate('/')}
           />}
           {!isDesktop && !isAdmin && <PiReceipt fontSize= '3.2rem' color='#fff'/>}
         </div>

@@ -7,7 +7,7 @@ import { SearchDishes } from "../pages/Search";
 export function ClientRoutes() {
   return(
     <Routes>
-      <Route path="/home" element={<Home/>}/>
+      <Route path="/" element={<Home/>}/>
       <Route path="/dish-details/:id" element={<DishDetails/>}/>
       <Route path="/dish-search" element={<SearchDishes/>}/>
     </Routes>
