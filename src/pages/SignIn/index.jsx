@@ -22,7 +22,7 @@ export function SignIn() {
     try{
       await SignIn({email, password});
       setIsLoading(false);
-      navigate('/home')
+      navigate('/')
     } catch (error){
       setIsLoading(false)
     }
