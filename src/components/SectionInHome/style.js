@@ -72,9 +72,6 @@ export const Container = styled.section`
       z-index: 2;
     }
   }
-
-
-
   
   .cardContainer {
     display: flex;
