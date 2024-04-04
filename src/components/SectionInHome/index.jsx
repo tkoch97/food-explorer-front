@@ -8,24 +8,32 @@ export function SectionInHome(props) {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const cardContainerRef = useRef(null);
-
+  
   const handleWithScroll = (scrollOffSet) => {
     if (cardContainerRef.current) {
       const newPosition = scrollPosition + scrollOffSet;
       cardContainerRef.current.scrollTo({
         left: newPosition,
-        bahavior: 'smooth',
+        behavior: 'smooth',
       });
       setScrollPosition(newPosition);
     }
   };
-
-  const scrollLeft = () => {
-    handleWithScroll(-100);
+  
+  const scrollLeft = (e) => {
+    e.preventDefault();
+    if (scrollPosition > 0) {
+      handleWithScroll(-200);
+    }
   }
-
-  const scrollRight = () => {
-    handleWithScroll(100);
+  
+  const scrollRight = (e) => {
+    e.preventDefault();
+    const containerWidth = cardContainerRef.current.clientWidth;
+    const contentWidth = cardContainerRef.current.scrollWidth;
+    if (scrollPosition < contentWidth - containerWidth) {
+      handleWithScroll(200);
+    }
   }
 
   return(
@@ -35,12 +43,16 @@ export function SectionInHome(props) {
       <p>{title}</p>
 
       <div className="content">
-        <button className="arrowLeft" onClick={scrollLeft}>
-          <SlArrowLeft/>
-        </button>
-        <button className="arrowRight" onClick={scrollRight}>
-          <SlArrowRight/>
-        </button>
+        {scrollPosition > 0 && (
+          <button className="arrowLeft" onClick={scrollLeft}>
+            <SlArrowLeft/>
+          </button>
+        )}
+        {scrollPosition + cardContainerRef.current?.clientWidth < cardContainerRef.current?.scrollWidth && (
+          <button className="arrowRight" onClick={scrollRight}>
+            <SlArrowRight/>
+          </button>
+        )}
         <div className="cardContainer" ref={cardContainerRef}>
           {children}
         </div>
