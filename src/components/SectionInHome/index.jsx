@@ -43,16 +43,12 @@ export function SectionInHome(props) {
       <p>{title}</p>
 
       <div className="content">
-        {scrollPosition > 0 && (
-          <button className="arrowLeft" onClick={scrollLeft}>
-            <SlArrowLeft/>
-          </button>
-        )}
-        {scrollPosition + cardContainerRef.current?.clientWidth < cardContainerRef.current?.scrollWidth && (
-          <button className="arrowRight" onClick={scrollRight}>
-            <SlArrowRight/>
-          </button>
-        )}
+        <button id="arrowLeft" onClick={scrollLeft}>
+          <SlArrowLeft/>
+        </button>
+        <button id="arrowRight" onClick={scrollRight}>
+          <SlArrowRight/>
+        </button>
         <div className="cardContainer" ref={cardContainerRef}>
           {children}
         </div>

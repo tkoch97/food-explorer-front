@@ -58,19 +58,20 @@ export const Container = styled.section`
       }
     }
   
-    .arrowLeft {
+    #arrowLeft {
       position: absolute;
       bottom: 50%;
       left: 0;
       z-index: 2;
     }
     
-    .arrowRight {
+    #arrowRight {
       position: absolute;
       bottom: 50%;
       right: 0;
       z-index: 2;
     }
+    
   }
   
   .cardContainer {
