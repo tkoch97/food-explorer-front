@@ -6,14 +6,24 @@ import { DishCard } from '../../components/DishCard/index.jsx';
 import { Container } from './style.js';
 import { useEffect, useState } from 'react';
 import { GetDishes } from '../../functions/GetDishes.js';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../hooks/authContext.jsx';
 
 export function Home() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dishes, setDishes] = useState([]);
+  
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+    
+  function executeSignOut() {
+    signOut();
+    navigate("/");
+  }
 
   useEffect(() => {
-    GetDishes(setDishes);
+    GetDishes(setDishes, executeSignOut);
   }, []);
 
   return (

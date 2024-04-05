@@ -7,21 +7,29 @@ import { Container } from './style.js';
 import { useEffect, useState } from 'react';
 import { GetFilterDishes } from '../../functions/GetFilterDishes.js';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/authContext.jsx';
 
 export function SearchDishes() {
-
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dishes, setDishes] = useState([]);
-
+  
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const nameOrIngredient = query.get('nameOrIngredient');
   const navigate = useNavigate();
+  const { signOut } = useAuth();
+      
+  function executeSignOut() {
+    signOut();
+    navigate("/");
+  }
 
   const propsToGetFilterDishes = {
     nameOrIngredient,
     setDishes,
-    navigate
+    navigate,
+    executeSignOut
   }
 
   useEffect(() => {
