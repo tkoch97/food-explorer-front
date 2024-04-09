@@ -9,11 +9,16 @@ import { UploadImage } from '../UploadImage';
 import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 import { PostANewDishToDB } from '../../functions/PostANewDishToDB';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/authContext';
+
 export function CreateDishForm () {
 
   const optionsInSelect = ['Refeição', 'Sobremesa', 'Bebida']
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const [price, setPrice] = useState('');
   const [name, setName] = useState('');
@@ -28,7 +33,6 @@ export function CreateDishForm () {
   const ingredientsDish = document.getElementById('ingredientsDish');
   const priceDish = document.getElementById('priceDish');
   const descriptionDish = document.getElementById('descriptionDish');
-  const imageDish = document.getElementById('imageDish');
   const categoryDish = document.getElementById('categoryDish');
   
   const handleWithChangePrice = (e) => {
@@ -36,19 +40,9 @@ export function CreateDishForm () {
     setPrice(TransformToMoneyPattern(value))
   };
 
-  function resetDishInformations() {
-    const selectedImageMsg = document.getElementById('selectedImageMsg')
-
-    imageDish.value = ''; 
-    setImage(null);
-    selectedImageMsg.innerHTML = '';
-    descriptionDish.value = '';
-    setDescription('');
-    setIngredients([]);
-    nameDish.value = '';
-    setName('');
-    priceDish.value = '';
-    setPrice('');
+  function executeSignOut() {
+    signOut();
+    navigate("/");
   }
   
   const SendInformationsToPostANewDish = (informationsToCreateANewDish) => {
@@ -73,8 +67,7 @@ export function CreateDishForm () {
       alert('Selecione uma categoria para o prato.');
       categoryDish.focus()
     } else {
-      PostANewDishToDB(informationsToCreateANewDish);
-      resetDishInformations();
+      PostANewDishToDB(informationsToCreateANewDish, navigate, executeSignOut);
     }
   }
 
