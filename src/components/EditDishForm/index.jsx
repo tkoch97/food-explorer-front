@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { api } from "../../services/api";
 import { Container, Form } from './style';
 import { useMediaQuery } from "react-responsive";
 import { Input } from '../Input';
@@ -13,6 +12,8 @@ import { FieldToInsertDishIngredients } from '../FieldToInsertDishIngredients';
 import { TransformToMoneyPattern } from '../../utils/transformToMoneyPattern';
 import { UpdateADishInDB } from '../../functions/UpdateADishInDB';
 import { DeleteDishFromDB } from "../../functions/DeleteDishFromDB";
+import { useAuth } from '../../hooks/authContext';
+import { FetchDish } from '../../functions/FetchDish';
 
 export function EditDishForm () {
 
@@ -20,14 +21,21 @@ export function EditDishForm () {
 
   const [dishData, setDishData] = useState();
   const navigate = useNavigate();
+  const { signOut } = useAuth();
+
+  function executeSignOut() {
+    signOut();
+    navigate("/");
+  }
+
+  const informationsToFetchDish = {
+    params: params,
+    setDishData: setDishData,
+    executeSignOut: executeSignOut,
+  }
 
   useEffect( () =>  {
-    async function fetchDish() {
-      const response = await api.get(`/dish/${params.id}`, {withCredentials:true});
-      setDishData(response.data);
-    }
-    
-    fetchDish();
+    FetchDish(informationsToFetchDish);
   }, [params.id]);
   
   useEffect(() => {
@@ -88,7 +96,7 @@ export function EditDishForm () {
     const confirmDelete = window.confirm("Tem certeza de que deseja excluir este prato? Esta ação não pode ser desfeita.");
 
     if (confirmDelete) {
-        DeleteDishFromDB(informationsToEditDish, navigate);
+        DeleteDishFromDB(informationsToEditDish, navigate, executeSignOut);
     } else {
         alert("Exclusão cancelada pelo usuário.");
     }

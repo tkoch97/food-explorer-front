@@ -5,23 +5,32 @@ import { BackButton } from '../../components/BackButton/index'
 import { Footer } from '../../components/Footer';
 import { DishContent } from '../../components/DishContent';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { api } from '../../services/api';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/authContext';
+import { FetchDish } from '../../functions/FetchDish';
 
 export function DishDetails() {
 
   const params = useParams();
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
 
-  const [dishData, setdishData] = useState();
+  const [dishData, setDishData] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    async function fetchDish() {
-      const response = await api.get(`/dish/${params.id}`, {withCredentials:true});
-      setdishData(response.data);
-    }
+  function executeSignOut() {
+    signOut();
+    navigate("/");
+  }
 
-    fetchDish();
+  const informationsToFetchDish = {
+    params: params,
+    setDishData: setDishData,
+    executeSignOut: executeSignOut,
+  }
+
+  useEffect(() => {
+    FetchDish(informationsToFetchDish);
   });
 
   return (
