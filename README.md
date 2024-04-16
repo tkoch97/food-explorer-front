@@ -1,17 +1,17 @@
 # Food Explorer - Front-end 🥗
 
 <p align="center" style='padding-top: 20px'>
-  <a href="#about">About the project 📁</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#features">Features ⚙</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#technologies">Technologies 🛠</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#usage">Utilização 💡</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#users">Personas 👥</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#license">Licença 📃</a>
+  <a href="#about">Sobre o projeto/ About the project 📁</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Funcionalidades/ Features ⚙</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#technologies">Tecnologias/ Technologies 🛠</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#usage">Utilização/ How to use 💡</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#personas">Personas 👥</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">Licença/ license 📃</a>
 </p>
 
 <div style='display: flex; justify-content: center; gap: 100px; padding: 20px 0px;'>
-<img src='./public/home_page_desktop.png' style='width: 700px; height: auto'>
-<img src='./public/home_page_mobile.png' style='width: 300px; height: auto'>
+<img src='./public/home_page_desktop.png' style='idth: 500px; height: 400px'>
+<img src='./public/home_page_mobile.png' style='width: 200px; height: 400px'>
 </div>
 
 <h2 id='about'>Sobre o projeto/ About the project 📁</h2>
@@ -116,7 +116,7 @@ $ npm run dev
 ```
  ⚠️ Este projeto utiliza uma hospedagem gratuita para o back-end, portanto, pode haver atrasos no tempo de resposta do servidor./ The API is hosted on a free service, therefore the application may take some time to receive responses from the server, resulting in delays.
 
-<h2 id="users">Personas 👥</h2>
+<h2 id="personas">Personas 👥</h2>
 
 <div style='display: flex; align-items: center; gap: 10px' >
 <img src='./public/br-flag.svg'>
